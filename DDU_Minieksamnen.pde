@@ -18,4 +18,11 @@ void setup(){
 }
 
 
-void draw(){}
+void draw(){
+background(#ebebeb);
+}
+
+
+void keyPressed(){
+  scenes[0].removeControl();
+}
