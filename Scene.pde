@@ -1,6 +1,9 @@
-class Scene{
+interface Scene{
+  void render();
+}
 
-void render(){}
 
-
+class frontPage{
+  
+  
 }
