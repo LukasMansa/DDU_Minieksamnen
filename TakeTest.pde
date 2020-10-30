@@ -31,8 +31,9 @@ public class TakeTest implements Scene {
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
       ;
+      
     testTitle.setText("Temp word");
-    ;
+    
   }
 
   void removeControl() {
@@ -46,6 +47,6 @@ public class TakeTest implements Scene {
   }
 }
 
-
 public void Afslut() {
+  println("Student test terminated");
 }

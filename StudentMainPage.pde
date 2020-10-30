@@ -1,7 +1,6 @@
 public class StudentMainPage implements Scene {
   Textarea yourTest;
 
-
   void inizializeControl() {
     // rendes the header of the page
     yourTest = cp5.addTextarea("txt")
