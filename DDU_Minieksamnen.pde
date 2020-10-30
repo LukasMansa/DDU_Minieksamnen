@@ -5,14 +5,14 @@ ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636),color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 
-Scene[] scenes = {new FrontPage()}; 
-int currentScene = 0;
+Scene[] scenes = {new FrontPage(), new StudentMainPage()}; 
+int currentScene = 1;
 
 void setup(){
   fullScreen();
   cp5= new ControlP5(this);
   
-  scenes[0].inizializeControl();
+  scenes[currentScene].inizializeControl();
  
 }
 
@@ -22,4 +22,17 @@ background(#ebebeb);
 
 void keyPressed(){
   scenes[0].removeControl();
+}
+
+
+
+void changeScene(int fromIndex, int toIndex){
+  scenes[fromIndex].removeControl();
+  scenes[toIndex].inizializeControl();
+}
+
+void changeScene(Scene toScene){
+  scenes[currentScene].removeControl();
+  toScene.inizializeControl();
+
 }
