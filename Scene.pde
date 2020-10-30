@@ -56,8 +56,13 @@ public class FrontPage implements Scene {
 }
 
 public void Login() {
-  println("Hello");
-
-  println(cp5.get(Textfield.class, "Username").getText());
-  println(cp5.get(Textfield.class, "Password").getText());
+  if(frameCount>0) {
+  String name = cp5.get(Textfield.class, "Username").getText();
+  String password = cp5.get(Textfield.class, "Password").getText();
+  String query = "SELECT * FROM Students WHERE StudentName='" + name + "' AND Password='" + encrypt.encrypt(password) + "'";
+  db.query(query);
+  if(db.next()) {
+    println("Login Successfull");
+  }
+  }
 }
