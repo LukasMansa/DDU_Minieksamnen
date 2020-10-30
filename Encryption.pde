@@ -20,7 +20,7 @@ class Encryption {
 
   }
   
-  void encrypt(String input) {
+  String encrypt(String input) {
         try {
       MessageDigest md = MessageDigest.getInstance("MD5");
       md.update(input.getBytes()); //storing the password in md object as bytes
@@ -30,6 +30,6 @@ class Encryption {
     catch (Exception e) {
       System.out.println("Exception: "+e);
     }
-    println(cipher);
+    return cipher;
   }
 }
