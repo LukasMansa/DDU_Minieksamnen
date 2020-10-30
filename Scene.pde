@@ -7,7 +7,7 @@ public class FrontPage implements Scene {
   Textarea headerText;  
 
   void inizializeControl() {
-    cp5.addButton("Login")
+    cp5.addButton("Login") // makes the button that logs in
       .setValue(100)
       .setPosition(width/2 - 100, 300)
       .setSize(200, 19)
@@ -55,9 +55,8 @@ public class FrontPage implements Scene {
   }
 }
 
-public void Login() {
+public void Login() { // is called when button of the same name is pressed, not explicitly.
   println("Hello");
-
   println(cp5.get(Textfield.class, "Username").getText());
   println(cp5.get(Textfield.class, "Password").getText());
 }
