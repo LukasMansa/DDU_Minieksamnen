@@ -7,7 +7,7 @@ public class FrontPage implements Scene {
   Textarea headerText;  
 
   void inizializeControl() {
-    cp5.addButton("Login")
+    cp5.addButton("Login") // makes the button that logs in
       .setValue(100)
       .setPosition(width/2 - 100, 300)
       .setSize(200, 19)
@@ -30,7 +30,7 @@ public class FrontPage implements Scene {
       .setColorCaptionLabel(color(#4e4f4a))
       ;
 
-     this.headerText = cp5.addTextarea("txt")
+    this.headerText = cp5.addTextarea("txt")
       .setPosition(width/2 - 150, 75)
       .setSize(300, 100)
       .setFont(createFont("arial", 12))
@@ -55,19 +55,20 @@ public class FrontPage implements Scene {
   }
 }
 
+
 public void Login() {
-  if(frameCount>0) {
-  String name = cp5.get(Textfield.class, "Username").getText();
-  String password = cp5.get(Textfield.class, "Password").getText();
-  String query = "SELECT * FROM Students WHERE StudentName='" + name + "' AND Password='" + encrypt.encrypt(password) + "'";
-  db.query(query);
-  if(db.next()) {
-    println("Login Successfull");
-    if(!db.getBoolean("isTeacher")) {
-    changeScene(0,1);
-    } else {
-      changeScene(0,2);
+  if (frameCount>0) {
+    String name = cp5.get(Textfield.class, "Username").getText();
+    String password = cp5.get(Textfield.class, "Password").getText();
+    String query = "SELECT * FROM Students WHERE StudentName='" + name + "' AND Password='" + encrypt.encrypt(password) + "'";
+    db.query(query);
+    if (db.next()) {
+      println("Login Successfull");
+      if (!db.getBoolean("isTeacher")) {
+        changeScene(0, 1);
+      } else {
+        changeScene(0, 2); // TODO: change to teacher page
+      }
     }
-  }
   }
 }
