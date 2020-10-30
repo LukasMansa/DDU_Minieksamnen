@@ -5,8 +5,8 @@ ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636),color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage()}; 
-int currentScene = 1;
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest()}; 
+int currentScene = 2;
 
 void setup(){
   fullScreen();
@@ -21,7 +21,7 @@ background(#ebebeb);
 }
 
 void keyPressed(){
-  scenes[0].removeControl();
+  //scenes[0].removeControl();
 }
 
 

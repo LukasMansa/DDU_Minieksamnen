@@ -20,8 +20,7 @@ public class StudentMainPage implements Scene {
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
-      ;
-      
+      ;   
   }
 
   void removeControl() {
