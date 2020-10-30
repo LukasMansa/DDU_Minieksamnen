@@ -16,9 +16,11 @@ void setup() {
   fullScreen();
   encrypt = new Encryption();
   db = new SQLite(this, "minieksamen.db"); //setup connection to database
-  if (!db.connect()) {
-    println("Connection failed");
-  }
+
+  // terminates the program if there is no connection.
+  assert !db.connect(): 
+  "Connection failed";
+
 
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Students";
@@ -40,7 +42,7 @@ void draw() {
 
 
 
-  void keyPressed() {
+void keyPressed() {
   //scenes[0].removeControl();
 }
 
