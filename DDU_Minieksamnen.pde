@@ -10,18 +10,15 @@ int currentScene = 0;
 
 void setup(){
   fullScreen();
-  background(standardColors[0]);
   cp5= new ControlP5(this);
   
   scenes[0].inizializeControl();
-  
+ 
 }
-
 
 void draw(){
 background(#ebebeb);
 }
-
 
 void keyPressed(){
   scenes[0].removeControl();
