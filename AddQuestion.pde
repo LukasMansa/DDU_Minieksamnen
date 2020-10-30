@@ -34,7 +34,7 @@ class AddQuestion implements Scene {
 
 
     cp5.addButton("Valgmulighed")
-      .setPosition(width/2-150, height/2-100)
+      .setPosition(width/2-100, height/2-100)
       .setSize(75, 25)
       ;
   }
@@ -42,7 +42,7 @@ class AddQuestion implements Scene {
     try {
       cp5.getController("Logout").remove();
       cp5.getController("Spørgsmål:").remove();
-      cp5.getController("Opret valgmulighed").remove();
+      cp5.getController("Valgmulighed").remove();
     }
     catch(Exception e) {
     }
