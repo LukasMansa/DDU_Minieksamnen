@@ -63,6 +63,11 @@ public void Login() {
   db.query(query);
   if(db.next()) {
     println("Login Successfull");
+    if(!db.getBoolean("isTeacher")) {
+    changeScene(0,1);
+    } else {
+      changeScene(0,2);
+    }
   }
   }
 }
