@@ -69,7 +69,7 @@ public void Login() {
       if (!db.getBoolean("isTeacher")) {
         changeScene(0, 1);
       } else {
-        changeScene(0, 2); // TODO: change to teacher page
+        changeScene(0, 3); // TODO: change to teacher page
       }
     }
   }
