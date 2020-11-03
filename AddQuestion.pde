@@ -2,6 +2,13 @@ class AddQuestion implements Scene {
   Textarea headerText1;
 
   void inizializeControl() {
+    cp5.addButton("Back")
+    .setPosition(width*0.1,height*0.1)
+    .setSize(45,25)
+    .setBroadcast(false)
+    .setValue(5)
+    .setBroadcast(true)
+    ;
     cp5.addButton("Logout")
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
@@ -31,6 +38,7 @@ class AddQuestion implements Scene {
   void removeControl() {
     try {
       cp5.getController("Logout").remove();
+      cp5.getController("Back").remove();
       cp5.getController("Spørgsmål:").remove();
       cp5.getController("Valgmulighed").remove();
       headerText1.remove();

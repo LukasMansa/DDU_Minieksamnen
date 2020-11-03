@@ -41,10 +41,6 @@ public class TeacherMainPage implements Scene {
   }
 }
 
-public void Logout() {
-  changeScene(currentScene, 0);
-}
-
 public void NewTest() {
-  changeScene(currentScene, 0);
+  changeScene(currentScene, 4);
 }
