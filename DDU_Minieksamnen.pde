@@ -5,8 +5,8 @@ ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion()}; 
-int currentScene = 3;
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest()}; 
+int currentScene = 4;
 
 void setup() {
   fullScreen();
