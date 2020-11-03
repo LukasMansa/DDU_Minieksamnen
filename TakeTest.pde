@@ -12,6 +12,14 @@ public class TakeTest implements Scene {
   }
 
   void inizializeControl() {
+    cp5.addButton("Back")
+    .setPosition(width*0.1,height*0.1)
+    .setSize(45,25)
+    .setBroadcast(false)
+    .setValue(1)
+    .setBroadcast(true)
+    ;
+    
     cp5.addButton("Logout")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
@@ -38,6 +46,7 @@ public class TakeTest implements Scene {
   void removeControl() {
     try {
       cp5.getController("Logout").remove();
+      cp5.getController("Back").remove();
       cp5.getController("Afslut").remove();
       testTitle.remove();
     }
@@ -48,4 +57,8 @@ public class TakeTest implements Scene {
 
 public void Afslut() {
   println("Student test terminated");
+}
+
+public void Back(int theValue) {
+  changeScene(currentScene, theValue);
 }

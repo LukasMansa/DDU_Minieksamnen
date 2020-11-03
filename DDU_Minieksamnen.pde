@@ -42,12 +42,14 @@ void draw() {
 void changeScene(int fromIndex, int toIndex) {
   scenes[fromIndex].removeControl();
   scenes[toIndex].inizializeControl();
+  currentScene = toIndex;
 }
 
 
 void changeScene(Scene toScene) {
   scenes[currentScene].removeControl();
   toScene.inizializeControl();
+  currentScene = 0;
 }
 
 public void Valgmulighed() { //Her skal man sendes over til AddOption og derefter komme tilbage til AddQuestion.
