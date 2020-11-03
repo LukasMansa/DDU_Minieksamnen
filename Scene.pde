@@ -17,7 +17,7 @@ public class FrontPage implements Scene {
     cp5.addTextfield("Username")
       .setPosition(width/2 - 100, 150)
       .setSize(200, 40)
-      .setFocus(true)
+      .setFocus(false)
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
       ;
@@ -25,14 +25,15 @@ public class FrontPage implements Scene {
     cp5.addTextfield("Password")
       .setPosition(width/2 - 100, 225)
       .setSize(200, 40)
-      .setFocus(true)
+      .setFocus(false)
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
+      .setPasswordMode(true)
       ;
 
     this.headerText = cp5.addTextarea("txt")
       .setPosition(width/2 - 150, 75)
-      .setSize(300, 100)
+      .setSize(300, 50)
       .setFont(createFont("arial", 12))
       .setLineHeight(14)
       .setColor(color(128))
@@ -71,4 +72,8 @@ public void Login() {
       }
     }
   }
+}
+
+public void Password() {
+  println("hello");
 }
