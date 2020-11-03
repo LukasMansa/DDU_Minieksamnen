@@ -17,7 +17,7 @@ public class FrontPage implements Scene {
     cp5.addTextfield("Username")
       .setPosition(width/2 - 100, 150)
       .setSize(200, 40)
-      .setFocus(true)
+      .setFocus(false)
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
       ;
@@ -25,14 +25,15 @@ public class FrontPage implements Scene {
     cp5.addTextfield("Password")
       .setPosition(width/2 - 100, 225)
       .setSize(200, 40)
-      .setFocus(true)
+      .setFocus(false)
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
+      .setPasswordMode(true)
       ;
 
-     this.headerText = cp5.addTextarea("txt")
+    this.headerText = cp5.addTextarea("txt")
       .setPosition(width/2 - 150, 75)
-      .setSize(300, 100)
+      .setSize(300, 50)
       .setFont(createFont("arial", 12))
       .setLineHeight(14)
       .setColor(color(128))
@@ -55,8 +56,25 @@ public class FrontPage implements Scene {
   }
 }
 
-public void Login() { // is called when button of the same name is pressed, not explicitly.
-  println("Hello");
-  println(cp5.get(Textfield.class, "Username").getText());
-  println(cp5.get(Textfield.class, "Password").getText());
+
+public void Login() {
+  if (frameCount>0) {
+    String name = cp5.get(Textfield.class, "Username").getText();
+    String password = cp5.get(Textfield.class, "Password").getText();
+    password = encrypt.encrypt(password);
+    String query = "SELECT * FROM Students WHERE StudentName=" + db.escape(name) + " AND Password=" + db.escape(password);
+    db.query(query);
+    if (db.next()) {
+      println("Login Successfull");
+      if (!db.getBoolean("isTeacher")) {
+        changeScene(0, 1);
+      } else {
+        changeScene(0, 2); // TODO: change to teacher page
+      }
+    }
+  }
+}
+
+public void Password() {
+  println("hello");
 }
