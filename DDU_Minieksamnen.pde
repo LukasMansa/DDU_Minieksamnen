@@ -35,6 +35,6 @@ void changeScene(Scene toScene) {
   toScene.inizializeControl();
 }
 
-public void Valgmulighed() {
+public void Valgmulighed() { //Her skal man sendes over til AddOption og derefter komme tilbage til AddQuestion.
   cp5.get(Textfield.class, "logout").getText();
 }

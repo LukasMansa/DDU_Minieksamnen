@@ -1,8 +1,8 @@
 class AddQuestion implements Scene {
-  Textarea headerText;
+  Textarea headerText1;
 
   void inizializeControl() {
-    cp5.addButton("logout")
+    cp5.addButton("Logout")
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
       ;
@@ -13,26 +13,17 @@ class AddQuestion implements Scene {
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
       ;
-    this.headerText = cp5.addTextarea("txt")
-      .setPosition(100, 100)
+    this.headerText1 = cp5.addTextarea("")
+      .setPosition(width/2-100, 100)
       .setSize(200, 200)
-      .setFont(createFont("arial", 12))
-      .setLineHeight(14)
+      .setFont(createFont("arial", 24))
+      .setLineHeight(12)
       .setColor(color(128))
       ;
-    headerText.setText("Opret spørgsmål"); 
-
-    this.headerText = cp5.addTextarea("txt")
-      .setPosition(width*0.9-100, 75)
-      .setSize(75, 25)
-      .setFont(createFont("arial", 12))
-      .setLineHeight(14)
-      .setColor(color(128))
-      ;
-    headerText.setText("Lærer");
+    headerText1.setText("Opret spørgsmål"); 
 
 
-    cp5.addButton("Valgmulighed")
+    cp5.addButton("Valgmulighed")  //Her skal addOption implementeres
       .setPosition(width/2-100, height/2-100)
       .setSize(75, 25)
       ;
@@ -42,6 +33,7 @@ class AddQuestion implements Scene {
       cp5.getController("Logout").remove();
       cp5.getController("Spørgsmål:").remove();
       cp5.getController("Valgmulighed").remove();
+      headerText1.remove();
     }
     catch(Exception e) {
     }
