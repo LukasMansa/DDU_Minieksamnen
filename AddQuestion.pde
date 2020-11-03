@@ -22,7 +22,6 @@ class AddQuestion implements Scene {
       ;
     headerText.setText("Opret spørgsmål"); 
 
-
     this.headerText = cp5.addTextarea("txt")
       .setPosition(width*0.9-100, 75)
       .setSize(75, 25)
