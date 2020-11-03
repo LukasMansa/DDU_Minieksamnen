@@ -21,7 +21,7 @@ void setup() {
   assert db.connect(): 
   "Connection failed";
 
-  //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
+  //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('chri12345', '"+encrypt.encrypt("abc")+"', 'teacherClass', '0')";
   //String showUsers = "SELECT * FROM Students";
   //String[] tableNames = db.getTableNames();
   // db.query(makeSomeUsers);
