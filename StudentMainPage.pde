@@ -14,8 +14,8 @@ public class StudentMainPage implements Scene {
       ;
     yourTest.setText("Dine Test");
 
-    // logout button
-    cp5.addButton("logout")
+    // Logout button
+    cp5.addButton("Logout")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
@@ -25,13 +25,13 @@ public class StudentMainPage implements Scene {
   void removeControl() {
     try {
       yourTest.remove();
-      cp5.getController("logout").remove();
+      cp5.getController("Logout").remove();
     }
     catch(Exception e) {
     }
   }
 }
 
-public void logout() {
+public void Logout() {
   changeScene(currentScene, 0);
 }
