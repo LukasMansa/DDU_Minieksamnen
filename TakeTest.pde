@@ -12,7 +12,7 @@ public class TakeTest implements Scene {
   }
 
   void inizializeControl() {
-    cp5.addButton("logout")
+    cp5.addButton("Logout")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
@@ -38,7 +38,7 @@ public class TakeTest implements Scene {
 
   void removeControl() {
     try {
-      cp5.getController("logout").remove();
+      cp5.getController("Logout").remove();
       cp5.getController("Afslut").remove();
       testTitle.remove();
     }
