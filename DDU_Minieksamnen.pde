@@ -8,7 +8,7 @@ color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(
 SQLite db;
 Encryption encrypt;
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest()};
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new TeacherMainPage()};
 int currentScene = 0;
 
 
