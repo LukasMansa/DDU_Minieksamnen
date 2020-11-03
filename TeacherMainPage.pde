@@ -12,9 +12,10 @@ public class TeacherMainPage implements Scene {
       //.setColorBackground(color(255, 100))
       //.setColorForeground(color(255, 100));
       ;
-    yourTests.setText("Dine Test");
+    yourTests.setText("Dine Tests");
 
-    cp5.addButton("Ny Test")
+    cp5.addButton("NewTest")
+      .setCaptionLabel("Ny Test")
       .setPosition(width*0.1, height*0.4)
       .setSize(75, 25)
     //.setColorBackground(color(255, 100))
@@ -32,7 +33,7 @@ public class TeacherMainPage implements Scene {
   void removeControl() {
     try {
       yourTests.remove();
-      cp5.getController("Ny Test").remove();
+      cp5.getController("NewTest").remove();
       cp5.getController("Logout").remove();
     }
     catch(Exception e) {
@@ -41,5 +42,9 @@ public class TeacherMainPage implements Scene {
 }
 
 public void Logout() {
+  changeScene(currentScene, 0);
+}
+
+public void NewTest() {
   changeScene(currentScene, 0);
 }
