@@ -18,9 +18,8 @@ void setup() {
   db = new SQLite(this, "minieksamen.db"); //setup connection to database
 
   // terminates the program if there is no connection.
-  assert !db.connect(): 
+  assert db.connect(): 
   "Connection failed";
-
 
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('chri12345', '"+encrypt.encrypt("abc")+"', 'teacherClass', '0')";
   //String showUsers = "SELECT * FROM Students";
