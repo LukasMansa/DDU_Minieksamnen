@@ -28,6 +28,7 @@ class Statistics implements Scene {
       cp5.getController("Logout").remove();
       cp5.getController("Back").remove();
       cp5.getController("").remove();
+      headerText1.remove();
     }
     catch(Exception e) {
     }
