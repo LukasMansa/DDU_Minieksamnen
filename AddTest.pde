@@ -65,3 +65,6 @@ class AddTest implements Scene {
     }
   }
 }
+public void Opret() {
+    changeScene(currentScene,3);
+  }

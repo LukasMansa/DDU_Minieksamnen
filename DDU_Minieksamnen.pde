@@ -5,9 +5,9 @@ ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(),  new TeacherMainPage()}; 
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new AddOption()}; 
 
-int currentScene = 0;
+int currentScene = 3;
 
 SQLite db;
 Encryption encrypt;
@@ -39,10 +39,12 @@ void draw() {
   background(#ebebeb);
 }
 
-void changeScene(int fromIndex, int toIndex) {
-  scenes[fromIndex].removeControl();
-  scenes[toIndex].inizializeControl();
-  currentScene = toIndex;
+void changeScene(int fromIndex, int toIndex) { //<>//
+   //<>//
+  scenes[fromIndex].removeControl(); //<>//
+  scenes[toIndex].inizializeControl(); //<>//
+  currentScene = toIndex; //<>// //<>// //<>//
+  
 }
 
 
@@ -50,8 +52,4 @@ void changeScene(Scene toScene) {
   scenes[currentScene].removeControl();
   toScene.inizializeControl();
   currentScene = 0;
-}
-
-public void Valgmulighed() { //Her skal man sendes over til AddOption og derefter komme tilbage til AddQuestion.
-  cp5.get(Textfield.class, "logout").getText();
 }
