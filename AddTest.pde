@@ -76,7 +76,11 @@ class AddTest implements Scene {
   }
 }
 public void Opret() {
-    changeScene(currentScene,3);
+    if(testName.length()>0) {
+          changeScene(currentScene,3);
+    } else {
+     
+    }
   }
   
 public void Hold() {
