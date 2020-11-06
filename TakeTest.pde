@@ -4,22 +4,26 @@ public class TakeTest implements Scene {
   Textarea testTitle;
 
   TakeTest(int _testID) {
-    this.testID = _testID;
+    this.setID(_testID);
   }
 
   TakeTest() {
     this.testID= 0;
   }
 
+  void setID(int _testID) {
+    this.testID = _testID;
+  }
+
   void inizializeControl() {
     cp5.addButton("Back")
-    .setPosition(width*0.1,height*0.1)
-    .setSize(45,25)
-    .setBroadcast(false)
-    .setValue(1)
-    .setBroadcast(true)
-    ;
-    
+      .setPosition(width*0.1, height*0.1)
+      .setSize(45, 25)
+      .setBroadcast(false)
+      .setValue(1)
+      .setBroadcast(true)
+      ;
+
     cp5.addButton("Logout")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
@@ -39,8 +43,17 @@ public class TakeTest implements Scene {
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
       ;
-      
+
     testTitle.setText("Temp Title");
+
+
+    {
+      String query = "SELECT * FROM Tests WHERE TestId='" + this.testID + "'";
+      db.query(query);
+      
+      printArray(db.getTableNames());
+      //println(db.getString("name"));
+    }
   }
 
   void removeControl() {
