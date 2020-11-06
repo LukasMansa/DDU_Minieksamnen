@@ -4,13 +4,13 @@ class AddTest implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
-    .setPosition(width*0.1,height*0.1)
-    .setSize(45,25)
-    .setBroadcast(false)
-    .setValue(5)
-    .setBroadcast(true)
-    ;
-    
+      .setPosition(width*0.1, height*0.1)
+      .setSize(45, 25)
+      .setBroadcast(false)
+      .setValue(5)
+      .setBroadcast(true)
+      ;
+
     cp5.addButton("Logout")
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
@@ -50,6 +50,11 @@ class AddTest implements Scene {
       .setColor(color(128))
       ;
     headerText3.setText("Opret spørgsmål");
+    
+    cp5.addButton("Gem")
+      .setPosition(width/2-100, 300)
+      .setSize(75, 25)
+      ;
   }
   void removeControl() {
     try {

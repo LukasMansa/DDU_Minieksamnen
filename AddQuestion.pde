@@ -24,6 +24,12 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
       ;
+    
+    cp5.addButton("Opret")  //Her skal addOption implementeres
+      .setPosition(width/2-100, height/2-50)
+      .setSize(75, 25)
+      ;
+      
     this.headerText1 = cp5.addTextarea("txt")
       .setPosition(width/2-100, 100)
       .setSize(200, 50)
@@ -33,17 +39,18 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
       ;
     headerText1.setText("Opret spørgsmål");
   }
+  
   void removeControl() {
     try {
       cp5.getController("Logout").remove(); //<>//
       cp5.getController("Back").remove(); //<>//
       cp5.getController("Spørgsmål:").remove(); //<>//
             cp5.getController("Valgmulighed").remove(); //<>//
+            cp5.getController("Opret").remove();
       headerText1.remove(); //<>//
       cp5.getController("txt").remove(); //<>//
-    }
-    catch(Exception e) { //<>// //<>//
-    }
+
+
   }
 }
 public void Valgmulighed() { //Her skal man sendes over til AddOption og derefter komme tilbage til AddQuestion.
