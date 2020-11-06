@@ -2,6 +2,7 @@ public class TakeTest implements Scene {
 
   int testID;
   Textarea testTitle;
+  Textarea theQuestion;
 
   TakeTest(int _testID) {
     this.setID(_testID);
@@ -45,20 +46,58 @@ public class TakeTest implements Scene {
       ;
 
 
-    String testTest = "INSERT INTO Tests (TestName,TestId, Status) VALUES ('Matematik #1',1,0)";
-    db.query(testTest);
+    //String testTest = "INSERT INTO Tests (TestName,TestId, Status) VALUES ('Matematik #1',1,0)";
+    //db.query(testTest);
+    
+    //String questionTest = "INSERT INTO Questions (TestId,QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice) "+
+    //                      "values(1,'What is a seagull?', 'An animal', 'A plant', 'A fungus', 'A seahorse', 'An Animal', 0) ";
+                          
+    //db.query(questionTest);
 
     { 
       String query = "SELECT * FROM Tests WHERE TestId='" + this.testID + "'";
       db.query(query);
-
-
-
-
       printArray(db.getTableNames());
 
-      //testTitle.setText(db.getString("TestName"));
+      testTitle.setText(db.getString("TestName"));
+
+
+      query = "SELECT * FROM Questions WHERE TestId='" + this.testID + "'";
+      db.query(query);
+      
+      //println(db.getString("QuestionName"));
+      
+      //while(db.next()){
+      //println(db.getString("QuestionName"));
+      //}
+      
+      
+      cp5.addTextarea("theQ")
+      .setPosition(300, 350)
+      .setSize(300, 50)
+      .setFont(createFont("arial", 18))
+      .setLineHeight(14)
+      .setColor(color(#4e4f4a))
+      .setText(db.getString("QuestionName"))
+      ;
+      
+    cp5.addRadioButton("radioButton")
+         .setPosition(300,400)
+         .setSize(40,20)
+         .setColorForeground(color(120))
+         .setColorActive(color(255))
+         .setColorLabel(color(0))
+         .setItemsPerRow(2)
+         .setSpacingColumn(100)
+         .setSpacingRow(50)
+         .addItem(db.getString("Answer1"),1)
+         .addItem(db.getString("Answer2"),2)
+         .addItem(db.getString("Answer3"),3)
+         .addItem(db.getString("Answer4"),4)
+         ;
+         
     }
+    
   }
 
   void removeControl() {
