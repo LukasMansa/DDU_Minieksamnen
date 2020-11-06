@@ -6,10 +6,12 @@ class Results implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
-      .setBroadcast(false)
-      .setValue(5)
+      .setSize(75, 25)
+      .setBroadcast(false) //<>//
+      .setValue(3) //<>//
       .setBroadcast(true)
       ;
     this.headerText1 = cp5.addTextarea("ht1")
@@ -22,7 +24,9 @@ class Results implements Scene {
     headerText1.setText(R); //Her skal der stå navnet på testen som læren selv vælger når testen oprettes.
 
     cp5.addButton("Logout")
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
   }

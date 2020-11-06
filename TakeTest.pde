@@ -13,20 +13,25 @@ public class TakeTest implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
-    .setPosition(width*0.1,height*0.1)
-    .setSize(45,25)
-    .setBroadcast(false)
-    .setValue(1)
-    .setBroadcast(true)
-    ;
-    
+      .setCaptionLabel("Tilbage")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.1, height*0.1)
+      .setSize(75, 25)
+      .setBroadcast(false) //<>//
+      .setValue(3) //<>//
+      .setBroadcast(true)
+      ;
+
     cp5.addButton("Logout")
-      //.setFont(createFont("arial", 18))
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
 
-    cp5.addButton("Afslut")
+    cp5.addButton("Complete")
+      .setCaptionLabel("Afslut")
+      .setFont(createFont("arial", 10))
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 125)
       .setSize(100, 50)
@@ -39,7 +44,7 @@ public class TakeTest implements Scene {
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
       ;
-      
+
     testTitle.setText("Temp Title");
   }
 
@@ -47,7 +52,7 @@ public class TakeTest implements Scene {
     try {
       cp5.getController("Logout").remove();
       cp5.getController("Back").remove();
-      cp5.getController("Afslut").remove();
+      cp5.getController("Complete").remove();
       testTitle.remove();
     }
     catch(Exception e) {

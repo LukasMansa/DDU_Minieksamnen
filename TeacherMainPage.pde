@@ -19,6 +19,7 @@ public class TeacherMainPage implements Scene {
 
     cp5.addButton("NewTest")
       .setCaptionLabel("Ny Test")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.4)
       .setSize(75, 25)
       //.setColorBackground(color(255, 100))
@@ -27,8 +28,9 @@ public class TeacherMainPage implements Scene {
 
     // logout button
     cp5.addButton("Logout")
-      //.setFont(createFont("arial", 18))
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
 

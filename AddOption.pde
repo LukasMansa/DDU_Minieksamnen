@@ -5,20 +5,23 @@ class AddOption implements Scene {
   }
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
+      .setSize(75, 25) //<>//
       .setBroadcast(false) //<>//
       .setValue(3) //<>//
       .setBroadcast(true)
       ;
-
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
-
     cp5.addButton("Add")
       .setCaptionLabel("Tilføj")
+      .setFont(createFont("arial", 10))
       .setPosition(width/2-100, height/2-50)
       .setSize(75, 25)
       ;

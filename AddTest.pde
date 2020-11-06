@@ -4,18 +4,24 @@ class AddTest implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
-      .setBroadcast(false)
-      .setValue(5)
+      .setSize(75, 25)
+      .setBroadcast(false) //<>//
+      .setValue(3) //<>//
       .setBroadcast(true)
       ;
 
     cp5.addButton("Logout")
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
-    cp5.addTextfield("Test navn")
+    cp5.addTextfield("TestName")
+      .setCaptionLabel("Test navn")
+      .setFont(createFont("arial", 10))
       .setPosition(width/2 - 100, 100)
       .setSize(200, 40)
       .setFocus(true)
@@ -23,7 +29,9 @@ class AddTest implements Scene {
       .setColorCaptionLabel(color(#4e4f4a))
       ;
 
-    cp5.addButton("Vælg hold")  //Her skal man kunne vælge klasser som man underviser i.
+    cp5.addButton("ChooseTeam")  //Her skal man kunne vælge klasser som man underviser i.
+      .setCaptionLabel("Vælg hold")
+      .setFont(createFont("arial", 10))
       .setPosition(width/2, 300) //Vis bogstav æ i vÆlg hold.
       .setSize(75, 25)
       ;
@@ -37,7 +45,9 @@ class AddTest implements Scene {
       ;
     headerText2.setText("Hold:");
 
-    cp5.addButton("Opret")  //Her skal man kunne vælge klasser som man underviser i.
+    cp5.addButton("Add")  //Her skal man kunne vælge klasser som man underviser i.
+      .setCaptionLabel("Opret")
+      .setFont(createFont("arial", 10))
       .setPosition(width/2, 400) //Vis bogstav æ i vÆlg hold.
       .setSize(75, 25)
       ;
@@ -50,8 +60,10 @@ class AddTest implements Scene {
       .setColor(color(128))
       ;
     headerText3.setText("Opret spørgsmål");
-    
-    cp5.addButton("Gem")
+
+    cp5.addButton("Save")
+      .setCaptionLabel("Gem")
+      .setFont(createFont("arial", 10))
       .setPosition(width/2-100, 300)
       .setSize(75, 25)
       ;
@@ -59,11 +71,11 @@ class AddTest implements Scene {
   void removeControl() {
     try {
       cp5.getController("Logout").remove();
-      cp5.getController("Test navn").remove();
-      cp5.getController("Vælg hold").remove();
+      cp5.getController("TestName").remove();
+      cp5.getController("ChooseTeam").remove();
       cp5.getController("Back").remove();
-      cp5.getController("Opret").remove();
-      cp5.getController("Gem").remove();
+      cp5.getController("Add").remove();
+      cp5.getController("Save").remove();
       headerText2.remove();
       headerText3.remove();
     }
@@ -72,5 +84,5 @@ class AddTest implements Scene {
   }
 }
 public void Opret() {
-    changeScene(currentScene,3);
-  }
+  changeScene(currentScene, 3);
+}

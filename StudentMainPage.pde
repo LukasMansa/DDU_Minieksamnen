@@ -16,10 +16,11 @@ public class StudentMainPage implements Scene {
 
     // Logout button
     cp5.addButton("Logout")
-      //.setFont(createFont("arial", 18))
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
-      ;   
+      ; 
   }
 
   void removeControl() {

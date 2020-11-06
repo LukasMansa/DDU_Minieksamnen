@@ -2,11 +2,13 @@ class Team implements Scene {
   Textarea headerText1;
 
   void inizializeControl() {
-     cp5.addButton("Back")
+    cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
+      .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
-      .setBroadcast(false)
-      .setValue(5)
+      .setSize(75, 25)
+      .setBroadcast(false) //<>//
+      .setValue(3) //<>//
       .setBroadcast(true)
       ;
     this.headerText1 = cp5.addTextarea("")
@@ -16,14 +18,18 @@ class Team implements Scene {
       .setLineHeight(12)
       .setColor(color(128))
       ;
+    headerText1.setText("Hold:");
+
     cp5.addButton("Logout")
-      .setPosition(width*0.9, 75)
+      .setCaptionLabel("Log ud")
+      .setFont(createFont("arial", 10))
+      .setPosition(width*0.9, 75) //<>//
       .setSize(75, 25)
       ;
-    headerText1.setText("Hold:");
-    
-     cp5.addButton("Tilføj")  //Her skal addOption implementeres
-      .setPosition(width/2-100, height/2+150)
+    cp5.addButton("Add")
+      .setCaptionLabel("Tilføj")
+      .setFont(createFont("arial", 10))
+      .setPosition(width/2-100, height/2-50)
       .setSize(75, 25)
       ;
   }
@@ -32,7 +38,7 @@ class Team implements Scene {
       headerText1.remove();
       cp5.getController("Back").remove();
       cp5.getController("Logout").remove();
-      cp5.getController("Tilføj").remove();
+      cp5.getController("Add").remove();
     }
     catch(Exception e) {
     }
