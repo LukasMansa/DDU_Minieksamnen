@@ -37,22 +37,27 @@ public class TakeTest implements Scene {
       ;
 
     testTitle = cp5.addTextarea("txt")
-      .setPosition(100, 100)
-      .setSize(200, 350)
+      .setPosition(100, 150)
+      .setSize(600, 50)
       .setFont(createFont("arial", 42))
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
       ;
 
-    testTitle.setText("Temp Title");
 
+    String testTest = "INSERT INTO Tests (TestName,TestId, Status) VALUES ('Matematik #1',1,0)";
+    db.query(testTest);
 
-    {
+    { 
       String query = "SELECT * FROM Tests WHERE TestId='" + this.testID + "'";
       db.query(query);
-      
+
+
+
+
       printArray(db.getTableNames());
-      //println(db.getString("name"));
+
+      //testTitle.setText(db.getString("TestName"));
     }
   }
 
