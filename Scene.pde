@@ -65,16 +65,12 @@ public void Login() {
     String query = "SELECT * FROM Students WHERE StudentName=" + db.escape(name) + " AND Password=" + db.escape(password);
     db.query(query);
     if (db.next()) {
-      println("Login Successfull");
+      println("Login Successful");
       if (!db.getBoolean("isTeacher")) {
         changeScene(0, 1);
       } else {
-        changeScene(0, 5); // TODO: change to teacher page
+        changeScene(0, 5);
       }
     }
   }
-}
-
-public void Password() {
-  println("hello");
 }
