@@ -63,6 +63,7 @@ class AddTest implements Scene {
       cp5.getController("Vælg hold").remove();
       cp5.getController("Back").remove();
       cp5.getController("Opret").remove();
+      cp5.getController("Gem").remove();
       headerText2.remove();
       headerText3.remove();
     }
