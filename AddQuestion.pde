@@ -34,6 +34,10 @@ class AddQuestion implements Scene {
       .setPosition(width/2-100, height/2-100)
       .setSize(75, 25)
       ;
+    cp5.addButton("Opret")  //Her skal addOption implementeres
+      .setPosition(width/2-100, height/2-50)
+      .setSize(75, 25)
+      ;
   }
   void removeControl() {
     try {
@@ -41,6 +45,7 @@ class AddQuestion implements Scene {
       cp5.getController("Back").remove();
       cp5.getController("Spørgsmål:").remove();
       cp5.getController("Valgmulighed").remove();
+      cp5.getController("Opret").remove();
       headerText1.remove();
     }
     catch(Exception e) {
