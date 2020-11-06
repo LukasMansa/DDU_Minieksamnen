@@ -9,11 +9,16 @@ class Team implements Scene {
       .setLineHeight(12)
       .setColor(color(128))
       ;
+    cp5.addButton("Logout")
+      .setPosition(width*0.9, 75)
+      .setSize(75, 25)
+      ;
     headerText1.setText("Hold:");
   }
   void removeControl() {
     try {
       headerText1.remove();
+      cp5.getController("Logout").remove();
     }
     catch(Exception e) {
     }
