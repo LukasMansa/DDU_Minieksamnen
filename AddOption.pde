@@ -17,6 +17,14 @@ class AddOption implements Scene {
       .setSize(75, 25)
       ;
 
+    cp5.addTextfield("Valg")
+      .setPosition(width/2-100,height/2-150)
+      .setSize(200,40)
+      .setFocus(true)
+      .setColor(color(#ebebeb))
+      .setColorCaptionLabel(color(#4e4f4a))
+      ;
+      
     cp5.addButton("Add")
       .setCaptionLabel("Tilføj")
       .setPosition(width/2-100, height/2-50)
@@ -25,7 +33,7 @@ class AddOption implements Scene {
 
     this.headerText1 = cp5.addTextarea("ht1")
       .setPosition(width/2-150, 150)
-      .setSize(2000, 2000)
+      .setSize(400, 50)
       .setFont(createFont("arial", 32))
       .setLineHeight(12)
       .setColor(color(128))
@@ -37,6 +45,7 @@ class AddOption implements Scene {
       cp5.getController("Back").remove();
       cp5.getController("Logout").remove();
       cp5.getController("Add").remove();
+      cp5.getController("Valg").remove();
       headerText1.remove();
       cp5.getController("ht1").remove();
     }

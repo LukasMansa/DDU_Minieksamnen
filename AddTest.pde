@@ -1,6 +1,8 @@
+String testName = "";
 class AddTest implements Scene {
   Textarea headerText2;
   Textarea headerText3;
+  
 
   void inizializeControl() {
     cp5.addButton("Back")
@@ -16,6 +18,7 @@ class AddTest implements Scene {
       .setSize(75, 25)
       ;
     cp5.addTextfield("Test navn")
+      .setText(testName)
       .setPosition(width/2 - 100, 100)
       .setSize(200, 40)
       .setFocus(true)
@@ -23,7 +26,8 @@ class AddTest implements Scene {
       .setColorCaptionLabel(color(#4e4f4a))
       ;
 
-    cp5.addButton("Vælg hold")  //Her skal man kunne vælge klasser som man underviser i.
+    cp5.addButton("Hold")  //Her skal man kunne vælge klasser som man underviser i.
+      .setCaptionLabel("Vælg Hold")
       .setPosition(width/2, 300) //Vis bogstav æ i vÆlg hold.
       .setSize(75, 25)
       ;
@@ -60,9 +64,10 @@ class AddTest implements Scene {
     try {
       cp5.getController("Logout").remove();
       cp5.getController("Test navn").remove();
-      cp5.getController("Vælg hold").remove();
+      cp5.getController("Hold").remove();
       cp5.getController("Back").remove();
       cp5.getController("Opret").remove();
+      cp5.getController("Gem").remove();
       headerText2.remove();
       headerText3.remove();
     }
@@ -73,3 +78,12 @@ class AddTest implements Scene {
 public void Opret() {
     changeScene(currentScene,3);
   }
+  
+public void Hold() {
+  changeScene(currentScene,7);
+}
+
+public void Gem() {
+  testName = cp5.get(Textfield.class, "Test navn").getText();
+  
+}
