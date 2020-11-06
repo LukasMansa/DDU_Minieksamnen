@@ -1,5 +1,6 @@
-String questionName = ""; //<>// //<>// //<>//
+String questionName = ""; //<>// //<>// //<>// //<>// //<>// //<>//
 boolean isMultipleChoice = false;
+RadioButton r;
 class AddQuestion implements Scene { //<>// //<>// //<>//
   Textarea headerText1;
 
@@ -34,10 +35,17 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
       .setSize(75, 25)
       ;
       
-    cp5.addRadioButton("MultipleChoice")
-    .setPosition(width/2-100,300) //<>//
-    .setSize(20,20) //<>//
-    ; //<>//
+     r = cp5.addRadioButton("MultipleChoice") //<>//
+        .setPosition(width/2-100, 300) //<>//
+        .setSize(40, 20) //<>//
+        .setColorForeground(color(#161759)) //<>//
+        .setColorActive(color(#435c27)) //<>//
+        .setColorLabel(color(#4e4f4a)) //<>//
+        .setItemsPerRow(2)
+        .setSpacingColumn(100) //<>// //<>//
+        .setSpacingRow(50)
+        .addItem("Is this multiple choice?", 1)
+        ;
 if(isMultipleChoice) { //<>//
   cp5.addTextfield("Svar1") //<>//
     .setPosition(width/2-200,300) //<>//
@@ -99,4 +107,9 @@ if(isMultipleChoice) { //<>//
 
 public void SaveQuestionName() {
   questionName = cp5.get(Textfield.class, "Spørgsmål:").getText();
+}
+void controlEvent(ControlEvent theEvent) {
+ if(theEvent.isFrom(r)){ 
+   isMultipleChoice = r.getState(0);
+ }
 }
