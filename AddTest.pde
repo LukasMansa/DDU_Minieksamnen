@@ -77,6 +77,9 @@ class AddTest implements Scene {
 }
 public void Opret() {
     if(testName.length()>0) {
+      String query = "INSERT INTO Tests (TestName, Status) VALUES (" + db.escape(testName) + ", 0)";
+      println(query);
+      //db.query(query);
           changeScene(currentScene,3);
     } else {
      
@@ -89,5 +92,4 @@ public void Hold() {
 
 public void Gem() {
   testName = cp5.get(Textfield.class, "Test navn").getText();
-  
 }

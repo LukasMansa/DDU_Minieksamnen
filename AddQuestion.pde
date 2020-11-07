@@ -162,12 +162,22 @@ void controlEvent(ControlEvent theEvent) {
 
 public void Create() {
   String questionName = cp5.get(Textfield.class, "Spørgsmål:").getText();
+  String correctAnswer = "";
   if (isMultipleChoice) {
     String answer1 = cp5.get(Textfield.class, "Svar1").getText();
     String answer2 = cp5.get(Textfield.class, "Svar2").getText();
     String answer3 = cp5.get(Textfield.class, "Svar3").getText();
     String answer4 = cp5.get(Textfield.class, "Svar4").getText();
+
+    for (int i = 0; i<4; i++) {
+      if (CorrectAnswer.getState(i) == true) {
+        correctAnswer = cp5.get(Textfield.class, "Svar"+(i+1)).getText();
+      }
+    }
+    String query = "INSERT INTO Questions (QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice, TestId) VALUES (" + db.escape(questionName) +  ", " + db.escape(answer1) + ", " + db.escape(answer2) + ", " + db.escape(answer3) + ", " + db.escape(answer4) + ", " + db.escape(correctAnswer) + ", 0)";
+    println(query);
   } else {
-    String answer = cp5.get(Textfield.class, "Svar").getText();
+    correctAnswer = cp5.get(Textfield.class, "Svar").getText();
   }
+  println(correctAnswer);
 }
