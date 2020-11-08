@@ -189,6 +189,7 @@ public void Create() {
     correctAnswer = cp5.get(Textfield.class, "Svar").getText();
     String query = "INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", 0";
     //db.query(query);
+    changeScene(currentScene, 4);
   }
 
 }
