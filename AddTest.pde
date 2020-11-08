@@ -39,7 +39,7 @@ class AddTest implements Scene {
       .setLineHeight(12)
       .setColor(color(128))
       ;
-    headerText2.setText("Hold:");
+    headerText2.setText("Hold: " + selectedTeam);
 
     cp5.addButton("Opret")  //Her skal man kunne vælge klasser som man underviser i.
       .setPosition(width/2, 400) //Vis bogstav æ i vÆlg hold.

@@ -24,10 +24,6 @@ class Team implements Scene {
       ;
     headerText1.setText("Hold:");
     
-     cp5.addButton("Tilføj")  //Her skal addOption implementeres
-      .setPosition(width/2-100, height/2+150)
-      .setSize(75, 25)
-      ;
     String query = "SELECT DISTINCT Class FROM Students WHERE Class != 'teacherClass'";
     db.query(query);
     while(db.next()) {
@@ -47,10 +43,10 @@ class Team implements Scene {
       headerText1.remove();
       cp5.getController("Back").remove();
       cp5.getController("Logout").remove();
-      cp5.getController("Tilføj").remove();
           for(int i = 0; i<classes.size(); i++) {
             cp5.getController("class"+classes.get(i)).remove();
           }
+          classes.clear();
     }
     catch(Exception e) {
     }
