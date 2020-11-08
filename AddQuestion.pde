@@ -184,6 +184,7 @@ public void Create() {
     String query = "INSERT INTO Questions (QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice, TestId) VALUES (" + db.escape(questionName) +  ", " + db.escape(answer1) + ", " + db.escape(answer2) + ", " + db.escape(answer3) + ", " + db.escape(answer4) + ", " + db.escape(correctAnswer) + ", 0)";
     println(query);
     //db.query(query);
+    changeScene(currentScene, 4);
   } else {
     correctAnswer = cp5.get(Textfield.class, "Svar").getText();
   }
