@@ -90,7 +90,7 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
   }
 }
 
-void controlEvent(ControlEvent theEvent) {
+void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a more general place. This function is called several places
   if (theEvent.isFrom(MultipleChoiceButton)) { 
     if (MultipleChoiceButton.getState(0)==true) {
       cp5.getController("Svar").remove();
@@ -161,6 +161,7 @@ void controlEvent(ControlEvent theEvent) {
   for(int i = 0; i<classes.size(); i++) {
   if(theEvent.isFrom("class"+classes.get(i))) {
     println("got event from " + classes.get(i));
+    selectedTeam = classes.get(i);
   }
 }
 }

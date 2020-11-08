@@ -1,4 +1,5 @@
-    ArrayList<String> classes = new ArrayList<String>();
+String selectedTeam = "";
+ArrayList<String> classes = new ArrayList<String>();
 class Team implements Scene {
   Textarea headerText1;
 
