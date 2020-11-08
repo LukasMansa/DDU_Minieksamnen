@@ -158,6 +158,11 @@ void controlEvent(ControlEvent theEvent) {
     }
     isMultipleChoice = MultipleChoiceButton.getState(0);
   }
+  for(int i = 0; i<classes.size(); i++) {
+  if(theEvent.isFrom("class"+classes.get(i))) {
+    println("got event from " + classes.get(i));
+  }
+}
 }
 
 public void Create() {
