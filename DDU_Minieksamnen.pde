@@ -24,7 +24,7 @@ void setup() {
   //String[] tableNames = db.getTableNames();
   // db.query(makeSomeUsers);
   //  db.query(showUsers);  
-  // while(db.next()) {
+ // while(db.next()) {
   //      println(db.getString(2));
   // }
 

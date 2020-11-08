@@ -48,12 +48,11 @@ class Team implements Scene {
       cp5.getController("Back").remove();
       cp5.getController("Logout").remove();
       cp5.getController("Tilføj").remove();
+          for(int i = 0; i<classes.size(); i++) {
+            cp5.getController("class"+classes.get(i)).remove();
+          }
     }
     catch(Exception e) {
     }
   }
-}
-
-public void class3d1() {
-
 }

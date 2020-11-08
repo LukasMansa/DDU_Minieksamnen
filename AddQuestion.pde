@@ -162,6 +162,7 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
   if(theEvent.isFrom("class"+classes.get(i))) {
     println("got event from " + classes.get(i));
     selectedTeam = classes.get(i);
+    changeScene(currentScene,4);
   }
 }
 }
