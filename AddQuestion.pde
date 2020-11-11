@@ -69,7 +69,7 @@ class AddQuestion implements Scene {
       headerText1.remove();
       MultipleChoiceButton.remove();
 
-      println("hello");
+
       if (!isMultipleChoice) {
         cp5.getController("Svar").remove();
       } else {
@@ -85,7 +85,7 @@ class AddQuestion implements Scene {
       }
     } 
     catch(Exception e) {
-      println(e);
+
     }
   }
 }
@@ -160,7 +160,6 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
   }
   for (int i = 0; i<classes.size(); i++) {
     if (theEvent.isFrom("class"+classes.get(i))) {
-      println("got event from " + classes.get(i));
       selectedTeam = classes.get(i);
       if (queries.size() == 0) {
         queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");

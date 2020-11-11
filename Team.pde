@@ -35,7 +35,6 @@ class Team implements Scene {
         .setSize(80,25)
         .setCaptionLabel(classes.get(i))
         ;
-        println(classes.get(i));
     }
   }
   void removeControl() {
