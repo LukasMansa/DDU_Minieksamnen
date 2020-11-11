@@ -147,10 +147,8 @@ public class TakeTest implements Scene {
 
   void removeQuestion() {
     try {
-      cp5.getController("nextQuestion").remove(); println("alpha");
+      cp5.getController("nextQuestion").remove();
       removeRadio();
-  
-      //cp5.getController("theQ").remove();println("gamma");
       theQuestion.remove();
     }
     catch(Exception e) {
@@ -163,10 +161,7 @@ public class TakeTest implements Scene {
    RB.removeItem(db.getString("Answer2"));
    RB.removeItem(db.getString("Answer3"));
    RB.removeItem(db.getString("Answer4"));
-  }
-  
-  
-  
+  } 
 }
 
 public void Afslut() {
@@ -177,7 +172,22 @@ public void Back(int theValue) {
   changeScene(currentScene, theValue);
 }
 
+  
+
 public void nextQuestion() {
+  
+  // get the students answer
+  
+  // get the true answer with SQL
+  
+  // compare the two
+  
+  // add the boolean value to an array
+  
+  
+  
+  // once the test is done, send the score via SQL
+  
   try {
     TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
     TT.removeQuestion();
