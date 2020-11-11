@@ -1,4 +1,4 @@
-boolean isMultipleChoice = false;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+int isMultipleChoice = 0;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { 
@@ -58,6 +58,7 @@ class AddQuestion implements Scene {
       .setColor(color(128))
       ;
     headerText1.setText("Opret spørgsmål");
+
   }
 
   void removeControl() {
@@ -70,7 +71,7 @@ class AddQuestion implements Scene {
       MultipleChoiceButton.remove();
 
 
-      if (!isMultipleChoice) {
+      if (isMultipleChoice == 0) {
         cp5.getController("Svar").remove();
       } else {
         cp5.getController("Svar1").remove();
@@ -81,7 +82,7 @@ class AddQuestion implements Scene {
         CorrectAnswer.removeItem("1");
         CorrectAnswer.removeItem("2");
         CorrectAnswer.removeItem("3");
-        isMultipleChoice = false;
+        isMultipleChoice = 0;
       }
     } 
     catch(Exception e) {
@@ -156,7 +157,12 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
         .setColorCaptionLabel(color(#4e4f4a))
         ;
     }
-    isMultipleChoice = MultipleChoiceButton.getState(0);
+    if(MultipleChoiceButton.getState(0)== false) {
+          isMultipleChoice = 0;
+    } else {
+      isMultipleChoice = 1;
+    }
+
   }
   for (int i = 0; i<classes.size(); i++) {
     if (theEvent.isFrom("class"+classes.get(i))) {
@@ -181,7 +187,7 @@ public void Create() {
   while(db.next()) {
     testId++;
   }
-  if (isMultipleChoice) {
+  if (isMultipleChoice == 1) {
     String answer1 = cp5.get(Textfield.class, "Svar1").getText();
     String answer2 = cp5.get(Textfield.class, "Svar2").getText();
     String answer3 = cp5.get(Textfield.class, "Svar3").getText();
@@ -196,7 +202,7 @@ public void Create() {
     changeScene(currentScene, 4);
   } else {
     correctAnswer = cp5.get(Textfield.class, "Svar").getText();
-    queries.add("INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", " + testId + ")");
+    queries.add("INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", " + isMultipleChoice + ", " + testId + ")");
     changeScene(currentScene, 4);
   }
 }
