@@ -67,14 +67,14 @@ class AddTest implements Scene {
       .setPosition(width/2-100, 300)
       .setSize(75, 25)
       ;
-if(noName == null) {
-    noName = cp5.addTextarea("NoName")
-      .setColor(color(255,0,0))
-      .setPosition(width/2-25, 50)
-      .setSize(75, 20)
-      ;
-    noName.setText("");
-}
+    if (noName == null) {
+      noName = cp5.addTextarea("NoName")
+        .setColor(color(255, 0, 0))
+        .setPosition(width/2-25, 50)
+        .setSize(75, 20)
+        ;
+      noName.setText("");
+    }
   }
   void removeControl() {
     try {
@@ -89,7 +89,6 @@ if(noName == null) {
       headerText3.remove();
       noName.setText("");
       cp5.getController("NoName").remove();
-      
     }
     catch(Exception e) {
     }
@@ -121,15 +120,14 @@ public void Gem() {
     }
   } else {
     noName.setText("Error: No test name");
-
   }
 }
 
 public void MakeTest() {
-  for (String q : queries) {
-    //db.query(q);
-    println(q);
-    println(selectedTeam);
-
+  if (selectedTeam.length()>0 && testName.length()>0) {
+    for (String q : queries) {
+      //db.query(q);
+      println(q);
+    }
   }
 }
