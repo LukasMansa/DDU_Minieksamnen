@@ -1,4 +1,4 @@
-public class TeacherMainPage implements Scene {
+public class TeacherMainPage implements Scene { //<>//
   Textarea yourTests;
 
   TeacherMainPage() {
@@ -30,7 +30,7 @@ public class TeacherMainPage implements Scene {
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
       .setFont(createFont("arial", 10))
-      .setPosition(width*0.9, 75) //<>//
+      .setPosition(width*0.9, 75)
       .setSize(75, 25)
       ;
 
@@ -44,12 +44,22 @@ public class TeacherMainPage implements Scene {
       //.setColorForeground(color(255, 100));
       ;
     yourTests.setText("Dine Tests");
+    
+    
+    //Status test button
+    cp5.addButton("Status")
+      .setCaptionLabel("Status")
+      .setFont(createFont("arial", 10))
+      .setPosition(width/2, height/2)
+      .setSize(75, 25)
+      ;
   }
 
   void removeControl() {
     try {
       cp5.getController("NewTest").remove();
       cp5.getController("Logout").remove();
+      cp5.getController("Status").remove();
       yourTests.remove();
     }
     catch(Exception e) {

@@ -1,5 +1,6 @@
-public class StudentMainPage implements Scene {
+public class StudentMainPage implements Scene { //<>//
   Textarea yourTest;
+  Textarea yourTest1; 
 
   void inizializeControl() {
     // rendes the header of the page
@@ -18,9 +19,9 @@ public class StudentMainPage implements Scene {
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
       .setFont(createFont("arial", 10))
-      .setPosition(width*0.9, 75) //<>//
+      .setPosition(width*0.9, 75)
       .setSize(75, 25)
-      ; 
+      ;
   }
 
   void removeControl() {
