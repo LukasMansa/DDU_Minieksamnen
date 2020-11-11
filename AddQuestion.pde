@@ -1,7 +1,7 @@
-boolean isMultipleChoice = false; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+boolean isMultipleChoice = false; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
-class AddQuestion implements Scene { //<>// //<>// //<>//
+class AddQuestion implements Scene { //<>// //<>//
   Textarea headerText1;
 
   void inizializeControl() {
@@ -35,14 +35,14 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
       .setSize(40, 20)
       .setColorForeground(color(#ff3636))
       .setColorBackground(color(#ff3636))
-      .setColorActive(color(#435c27)) //<>//
-      .setColorLabel(color(#4e4f4a)) //<>//
-      .setItemsPerRow(2) //<>//
-      .setSpacingColumn(100) //<>//
-      .setSpacingRow(50) //<>//
-      .addItem("Is this multiple choice?", 0) //<>//
+      .setColorActive(color(#435c27))
+      .setColorLabel(color(#4e4f4a))
+      .setItemsPerRow(2)
+      .setSpacingColumn(100)
+      .setSpacingRow(50)
+      .addItem("Is this multiple choice?", 0)
       ;
- //<>// //<>//
+    //<>//
     cp5.addTextfield("Svar")
       .setPosition(width/2 - 100, 400)
       .setSize(200, 40)
@@ -62,11 +62,11 @@ class AddQuestion implements Scene { //<>// //<>// //<>//
 
   void removeControl() {
     try {
-      cp5.getController("Logout").remove(); //<>//
-      cp5.getController("Back").remove(); //<>//
-      cp5.getController("Spørgsmål:").remove(); //<>//
+      cp5.getController("Logout").remove();
+      cp5.getController("Back").remove();
+      cp5.getController("Spørgsmål:").remove();
       cp5.getController("Create").remove();
-      headerText1.remove(); //<>//
+      headerText1.remove();
       MultipleChoiceButton.remove();
 
       println("hello");
@@ -94,10 +94,10 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
   if (theEvent.isFrom(MultipleChoiceButton)) { 
     if (MultipleChoiceButton.getState(0)==true) {
       cp5.getController("Svar").remove();
-      cp5.addTextfield("Svar1") //<>//
-        .setPosition(width/2-200, 400) //<>//
+      cp5.addTextfield("Svar1")
+        .setPosition(width/2-200, 400)
         .setSize(200, 40)
-        .setColor(color(#ebebeb)) //<>// //<>//
+        .setColor(color(#ebebeb)) //<>//
         .setColorCaptionLabel(color(#4e4f4a))
         ;
       cp5.addTextfield("Svar2")
@@ -158,13 +158,19 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
     }
     isMultipleChoice = MultipleChoiceButton.getState(0);
   }
-  for(int i = 0; i<classes.size(); i++) {
-  if(theEvent.isFrom("class"+classes.get(i))) {
-    println("got event from " + classes.get(i));
-    selectedTeam = classes.get(i);
-    changeScene(currentScene,4);
+  for (int i = 0; i<classes.size(); i++) {
+    if (theEvent.isFrom("class"+classes.get(i))) {
+      println("got event from " + classes.get(i));
+      selectedTeam = classes.get(i);
+      if (queries.size() == 0) {
+        queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+      } else {
+        queries.removeFirst();
+        queries.addFirst("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+      }
+      changeScene(currentScene, 4);
+    }
   }
-}
 }
 
 public void Create() {
@@ -191,5 +197,4 @@ public void Create() {
     //db.query(query);
     changeScene(currentScene, 4);
   }
-
 }

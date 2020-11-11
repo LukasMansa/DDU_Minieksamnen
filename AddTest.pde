@@ -1,8 +1,9 @@
 String testName = "";
+Textarea noName;
+LinkedList<String> queries = new LinkedList<String>();
 class AddTest implements Scene {
   Textarea headerText2;
   Textarea headerText3;
-  
 
   void inizializeControl() {
     cp5.addButton("Back")
@@ -46,6 +47,12 @@ class AddTest implements Scene {
       .setSize(75, 25)
       ;
 
+    cp5.addButton("MakeTest")
+      .setPosition(width/2-75/2, height-150)
+      .setSize(75, 25)
+      .setCaptionLabel("Lav Test")
+      ;
+
     this.headerText3 = cp5.addTextarea("ht3")
       .setPosition(width/2, 350)
       .setSize(100, 50)
@@ -54,11 +61,20 @@ class AddTest implements Scene {
       .setColor(color(128))
       ;
     headerText3.setText("Opret spørgsmål");
-    
+
     cp5.addButton("Gem")
+      .setCaptionLabel("Gem test navn")
       .setPosition(width/2-100, 300)
       .setSize(75, 25)
       ;
+if(noName == null) {
+    noName = cp5.addTextarea("NoName")
+      .setColor(color(255,0,0))
+      .setPosition(width/2-25, 50)
+      .setSize(75, 20)
+      ;
+    noName.setText("");
+}
   }
   void removeControl() {
     try {
@@ -68,28 +84,52 @@ class AddTest implements Scene {
       cp5.getController("Back").remove();
       cp5.getController("Opret").remove();
       cp5.getController("Gem").remove();
+      cp5.getController("MakeTest").remove();
       headerText2.remove();
       headerText3.remove();
+      noName.setText("");
+      cp5.getController("NoName").remove();
+      
     }
     catch(Exception e) {
     }
   }
 }
 public void Opret() {
-    if(testName.length()>0) {
-      String query = "INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")";
-      println(query);
-      //db.query(query);
-          changeScene(currentScene,3);
-    } else {
-     
-    }
+  if (testName.length()>0) {
+
+
+    //db.query(query);
+    changeScene(currentScene, 3);
+  } else {
   }
-  
+}
+
 public void Hold() {
-  changeScene(currentScene,7);
+  changeScene(currentScene, 7);
 }
 
 public void Gem() {
   testName = cp5.get(Textfield.class, "Test navn").getText();
+  if (testName.length()>0) {
+    noName.setText("");
+    if (queries.size() == 0) {
+      queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+    } else {
+      queries.removeFirst();
+      queries.addFirst("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+    }
+  } else {
+    noName.setText("Error: No test name");
+
+  }
+}
+
+public void MakeTest() {
+  for (String q : queries) {
+    //db.query(q);
+    println(q);
+    println(selectedTeam);
+
+  }
 }

@@ -1,6 +1,6 @@
 import controlP5.*;
 import de.bezier.data.sql.*;
-
+import java.util.*;
 ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
@@ -19,13 +19,13 @@ void setup() {
   assert db.connect(): 
   "Connection failed";
 
-  //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('chri12345', '"+encrypt.encrypt("abc")+"', 'teacherClass', '0')";
+  //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Students";
-  //String[] tableNames = db.getTableNames();
+  ////String[] tableNames = db.getTableNames();
   // db.query(makeSomeUsers);
   //  db.query(showUsers);  
- // while(db.next()) {
-  //      println(db.getString(2));
+  //while(db.next()) {
+    //    println(db.getString(2));
   // }
 
   cp5= new ControlP5(this);
