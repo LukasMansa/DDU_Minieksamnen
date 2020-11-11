@@ -77,7 +77,7 @@ class AddTest implements Scene {
 }
 public void Opret() {
     if(testName.length()>0) {
-      String query = "INSERT INTO Tests (TestName, Status) VALUES (" + db.escape(testName) + ", 0)";
+      String query = "INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")";
       println(query);
       //db.query(query);
           changeScene(currentScene,3);
