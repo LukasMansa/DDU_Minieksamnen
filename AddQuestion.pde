@@ -1,4 +1,4 @@
-boolean isMultipleChoice = false; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+boolean isMultipleChoice = false; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { //<>// //<>//
@@ -188,12 +188,10 @@ public void Create() {
       }
     }
     queries.add("INSERT INTO Questions (QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice, TestId) VALUES (" + db.escape(questionName) +  ", " + db.escape(answer1) + ", " + db.escape(answer2) + ", " + db.escape(answer3) + ", " + db.escape(answer4) + ", " + db.escape(correctAnswer) + ", " + isMultipleChoice + ", 0)");
-    //db.query(query);
     changeScene(currentScene, 4);
   } else {
     correctAnswer = cp5.get(Textfield.class, "Svar").getText();
     queries.add("INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", 0)");
-    //db.query(query);
     changeScene(currentScene, 4);
   }
 }

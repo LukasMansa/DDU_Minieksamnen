@@ -1,5 +1,5 @@
 String testName = "";
-Textarea noName;
+Textarea errorMessage;
 LinkedList<String> queries = new LinkedList<String>();
 class AddTest implements Scene {
   Textarea headerText2;
@@ -67,13 +67,13 @@ class AddTest implements Scene {
       .setPosition(width/2-100, 300)
       .setSize(75, 25)
       ;
-    if (noName == null) {
-      noName = cp5.addTextarea("NoName")
+    if (errorMessage == null) {
+      errorMessage = cp5.addTextarea("ErrorMessage")
         .setColor(color(255, 0, 0))
         .setPosition(width/2-25, 50)
-        .setSize(75, 20)
+        .setSize(100, 20)
         ;
-      noName.setText("");
+      errorMessage.setText("");
     }
   }
   void removeControl() {
@@ -87,8 +87,8 @@ class AddTest implements Scene {
       cp5.getController("MakeTest").remove();
       headerText2.remove();
       headerText3.remove();
-      noName.setText("");
-      cp5.getController("NoName").remove();
+      errorMessage.setText("");
+      cp5.getController("ErrorMessage").remove();
     }
     catch(Exception e) {
     }
@@ -96,11 +96,9 @@ class AddTest implements Scene {
 }
 public void Opret() {
   if (testName.length()>0) {
-
-
-    //db.query(query);
     changeScene(currentScene, 3);
   } else {
+    errorMessage.setText("Fejl: Navngiv din test først tak");
   }
 }
 
@@ -111,7 +109,7 @@ public void Hold() {
 public void Gem() {
   testName = cp5.get(Textfield.class, "Test navn").getText();
   if (testName.length()>0) {
-    noName.setText("");
+    errorMessage.setText("");
     if (queries.size() == 0) {
       queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
     } else {
@@ -119,7 +117,7 @@ public void Gem() {
       queries.addFirst("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
     }
   } else {
-    noName.setText("Error: No test name");
+    errorMessage.setText("Fejl: Test har intet navn");
   }
 }
 

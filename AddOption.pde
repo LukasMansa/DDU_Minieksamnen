@@ -7,13 +7,13 @@ class AddOption implements Scene {
     cp5.addButton("Back")
       .setPosition(width*0.1, height*0.1)
       .setSize(45, 25)
-      .setBroadcast(false) //<>//
-      .setValue(3) //<>//
+      .setBroadcast(false) //<>// //<>//
+      .setValue(3) //<>// //<>//
       .setBroadcast(true)
       ;
 
     cp5.addButton("Logout")
-      .setPosition(width*0.9, 75) //<>//
+      .setPosition(width*0.9, 75) //<>// //<>//
       .setSize(75, 25)
       ;
 
