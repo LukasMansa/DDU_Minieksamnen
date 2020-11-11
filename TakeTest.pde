@@ -1,5 +1,5 @@
 public class TakeTest implements Scene {
-  
+
   RadioButton RB;
 
   int testID;
@@ -87,7 +87,7 @@ public class TakeTest implements Scene {
       removeRadio(); 
       theQuestion.remove();
       testTitle.remove();
-      cp5.getController("nextQuestion").remove(); 
+      cp5.getController("nextQuestion").remove();
     }
     catch(Exception e) {
       println("Failure removing all controllers: " + e);
@@ -109,7 +109,7 @@ public class TakeTest implements Scene {
       }
 
       try {
-       theQuestion = cp5.addTextarea("theQ")
+        theQuestion = cp5.addTextarea("theQ")
           .setPosition(300, 350)
           .setSize(300, 50)
           .setFont(createFont("arial", 18))
@@ -122,7 +122,7 @@ public class TakeTest implements Scene {
       }
 
       try {
-      RB = cp5.addRadioButton("radioButton")
+        RB = cp5.addRadioButton("radioButton")
           .setPosition(300, 400)
           .setSize(40, 20)
           .setColorForeground(color(#161759))
@@ -131,16 +131,16 @@ public class TakeTest implements Scene {
           .setItemsPerRow(2)
           .setSpacingColumn(100)
           .setSpacingRow(50)
-          .addItem(db.getString("Answer1"), 1)
-          .addItem(db.getString("Answer2"), 2)
-          .addItem(db.getString("Answer3"), 3)
-          .addItem(db.getString("Answer4"), 4)
+          .addItem(db.getString("Answer1").toLowerCase(), 1)
+          .addItem(db.getString("Answer2").toLowerCase(), 2)
+          .addItem(db.getString("Answer3").toLowerCase(), 3)
+          .addItem(db.getString("Answer4").toLowerCase(), 4)
           ;
       }
       catch(Exception e) {
       }
     } else {
-      
+
       removeQuestion();
     }
   }
@@ -155,41 +155,46 @@ public class TakeTest implements Scene {
       println("Failure removing questions: " + e);
     }
   }
-  
-  void removeRadio(){
-   RB.removeItem(db.getString("Answer1"));
-   RB.removeItem(db.getString("Answer2"));
-   RB.removeItem(db.getString("Answer3"));
-   RB.removeItem(db.getString("Answer4"));
-  } 
+
+  void removeRadio() {
+    
+    RB.removeItem(db.getString("Answer1").toLowerCase());
+    RB.removeItem(db.getString("Answer2").toLowerCase());
+    RB.removeItem(db.getString("Answer3").toLowerCase());
+    RB.removeItem(db.getString("Answer4").toLowerCase());
+    println("Remove Radio");
+  }
 }
 
 public void Afslut() {
+   TakeTest TT = (TakeTest) scenes[2];
+  String Quary = "INSERT INTO Scores (TestId, StudentId, Score) VALUES (" +TT.testID+ ", " + personID +", " + studentScore +")";
+  db.query(Quary);
+  
   println("Student test terminated");
+  changeScene(currentScene, 0);
 }
 
 public void Back(int theValue) {
   changeScene(currentScene, theValue);
 }
 
-  
+int studentScore;
 
 public void nextQuestion() {
-  
+  TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
   // get the students answer
-  
   // get the true answer with SQL
-  
   // compare the two
-  
-  // add the boolean value to an array
-  
-  
-  
-  // once the test is done, send the score via SQL
-  
+  // add zero or one to the int;
+  println(TT.RB.getState(db.getString("CorrectAnswer").toLowerCase()));
+
+  if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
+    studentScore++;
+  }
+  // once the test is done, send the score via SQL to Scores table
+
   try {
-    TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
     TT.removeQuestion();
     TT.inizializeQuestion();
   }
