@@ -103,7 +103,7 @@ public void Opret() {
 }
 
 public void Hold() {
-  changeScene(currentScene, 7);
+  changeScene(currentScene, 6);
 }
 
 public void Gem() {
@@ -124,7 +124,7 @@ public void Gem() {
 public void MakeTest() {
   if (selectedTeam.length()>0 && testName.length()>0) {
     for (String q : queries) {
-      //db.query(q);
+      db.query(q);
     }
   }
 }
