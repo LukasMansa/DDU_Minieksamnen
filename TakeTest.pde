@@ -61,7 +61,6 @@ public class TakeTest implements Scene {
 
       testTitle.setText(db.getString("TestName"));
 
-
       query = "SELECT * FROM Questions WHERE TestId='" + this.testID + "'";
       db.query(query);
 
@@ -70,7 +69,6 @@ public class TakeTest implements Scene {
       //while(db.next()){
       //println(db.getString("QuestionName"));
       //}
-
 
       cp5.addTextarea("theQ")
         .setPosition(300, 350)
@@ -101,9 +99,7 @@ public class TakeTest implements Scene {
         .setSize(100, 35)
         .setColorForeground(color(#161759))
         .setColorActive(color(#435c27))
-        .setCaptionLabel("Aflever og gå til næste");
-        ;
-      ;
+        .setCaptionLabel("Next");
     }
   }
 
@@ -129,8 +125,11 @@ public void Back(int theValue) {
   changeScene(currentScene, theValue);
 }
 
-public void nextQuestion(){
-  println("hi");
-  db.next();
-  println("hi once again");
+public void nextQuestion() {
+  try {
+    db.next();
+    println(db.getString("QuestionName"));
+  }
+  catch(Exception e) {
+  }
 }
