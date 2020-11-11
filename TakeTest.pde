@@ -69,37 +69,11 @@ public class TakeTest implements Scene {
       //while(db.next()){
       //println(db.getString("QuestionName"));
       //}
-
-      cp5.addTextarea("theQ")
-        .setPosition(300, 350)
-        .setSize(300, 50)
-        .setFont(createFont("arial", 18))
-        .setLineHeight(14)
-        .setColor(color(#4e4f4a))
-        .setText(db.getString("QuestionName"))
-        ;
-
-      cp5.addRadioButton("radioButton")
-        .setPosition(300, 400)
-        .setSize(40, 20)
-        .setColorForeground(color(#161759))
-        .setColorActive(color(#435c27))
-        .setColorLabel(color(#4e4f4a))
-        .setItemsPerRow(2)
-        .setSpacingColumn(100)
-        .setSpacingRow(50)
-        .addItem(db.getString("Answer1"), 1)
-        .addItem(db.getString("Answer2"), 2)
-        .addItem(db.getString("Answer3"), 3)
-        .addItem(db.getString("Answer4"), 4)
-        ;
-
-      cp5.addButton("nextQuestion")
-        .setPosition(300, 600)
-        .setSize(100, 35)
-        .setColorForeground(color(#161759))
-        .setColorActive(color(#435c27))
-        .setCaptionLabel("Next");
+      try {
+        inizializeQuestion();
+      }
+      catch(Exception e) {
+      }
     }
   }
 
@@ -115,6 +89,69 @@ public class TakeTest implements Scene {
     catch(Exception e) {
     }
   }
+
+  void inizializeQuestion() {
+    //db.next();
+    if (db.next()) {
+      try {
+        cp5.addButton("nextQuestion")
+          .setPosition(300, 600)
+          .setSize(100, 35)
+          .setColorForeground(color(#161759))
+          .setColorActive(color(#435c27))
+          .setCaptionLabel("Next");
+      }
+      catch(Exception e) {
+      }
+
+      try {
+        cp5.addTextarea("theQ")
+          .setPosition(300, 350)
+          .setSize(300, 50)
+          .setFont(createFont("arial", 18))
+          .setLineHeight(14)
+          .setColor(color(#4e4f4a))
+          .setText(db.getString("QuestionName"))
+          ;
+      }
+      catch(Exception e) {
+      }
+
+      try {
+        cp5.addRadioButton("radioButton")
+          .setPosition(300, 400)
+          .setSize(40, 20)
+          .setColorForeground(color(#161759))
+          .setColorActive(color(#435c27))
+          .setColorLabel(color(#4e4f4a))
+          .setItemsPerRow(2)
+          .setSpacingColumn(100)
+          .setSpacingRow(50)
+          .addItem(db.getString("Answer1"), 1)
+          .addItem(db.getString("Answer2"), 2)
+          .addItem(db.getString("Answer3"), 3)
+          .addItem(db.getString("Answer4"), 4)
+          ;
+      }
+      catch(Exception e) {
+      }
+    } else {
+      println("Here");
+      //cp5.getController("nextQuestion").remove();
+      removeQuestion();
+    }
+  }
+
+  void removeQuestion() {
+    try {
+      cp5.getController("nextQuestion").remove();
+      cp5.getController("radioButton").remove();
+      cp5.getController("theQ").remove();
+    }
+    catch(Exception e) {
+      println("Failure removing questions: " + e);
+    }
+  }
 }
 
 public void Afslut() {
@@ -127,9 +164,11 @@ public void Back(int theValue) {
 
 public void nextQuestion() {
   try {
-    db.next();
-    println(db.getString("QuestionName"));
+    TakeTest TT = (TakeTest) scenes[2];
+    TT.removeQuestion();
+    TT.inizializeQuestion();
   }
   catch(Exception e) {
+    println("Failure: " + e);
   }
 }
