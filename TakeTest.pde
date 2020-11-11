@@ -1,4 +1,6 @@
 public class TakeTest implements Scene {
+  
+  RadioButton RB;
 
   int testID;
   Textarea testTitle;
@@ -80,13 +82,15 @@ public class TakeTest implements Scene {
   void removeControl() {
     try {
       cp5.getController("Logout").remove();
-      cp5.getController("Back").remove();
-      cp5.getController("Afslut").remove();
-      cp5.getController("radioButton").remove();
-      cp5.getController("theQ").remove();
+      cp5.getController("Back").remove(); 
+      cp5.getController("Afslut").remove(); 
+      removeRadio(); 
+      theQuestion.remove();
       testTitle.remove();
+      cp5.getController("nextQuestion").remove(); 
     }
     catch(Exception e) {
+      println("Failure removing all controllers: " + e);
     }
   }
 
@@ -105,7 +109,7 @@ public class TakeTest implements Scene {
       }
 
       try {
-        cp5.addTextarea("theQ")
+       theQuestion = cp5.addTextarea("theQ")
           .setPosition(300, 350)
           .setSize(300, 50)
           .setFont(createFont("arial", 18))
@@ -118,7 +122,7 @@ public class TakeTest implements Scene {
       }
 
       try {
-        cp5.addRadioButton("radioButton")
+      RB = cp5.addRadioButton("radioButton")
           .setPosition(300, 400)
           .setSize(40, 20)
           .setColorForeground(color(#161759))
@@ -136,22 +140,33 @@ public class TakeTest implements Scene {
       catch(Exception e) {
       }
     } else {
-      println("Here");
-      //cp5.getController("nextQuestion").remove();
+      
       removeQuestion();
     }
   }
 
   void removeQuestion() {
     try {
-      cp5.getController("nextQuestion").remove();
-      cp5.getController("radioButton").remove();
-      cp5.getController("theQ").remove();
+      cp5.getController("nextQuestion").remove(); println("alpha");
+      removeRadio();
+  
+      //cp5.getController("theQ").remove();println("gamma");
+      theQuestion.remove();
     }
     catch(Exception e) {
       println("Failure removing questions: " + e);
     }
   }
+  
+  void removeRadio(){
+   RB.removeItem(db.getString("Answer1"));
+   RB.removeItem(db.getString("Answer2"));
+   RB.removeItem(db.getString("Answer3"));
+   RB.removeItem(db.getString("Answer4"));
+  }
+  
+  
+  
 }
 
 public void Afslut() {
@@ -164,7 +179,7 @@ public void Back(int theValue) {
 
 public void nextQuestion() {
   try {
-    TakeTest TT = (TakeTest) scenes[2];
+    TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
     TT.removeQuestion();
     TT.inizializeQuestion();
   }
