@@ -1,7 +1,7 @@
-boolean isMultipleChoice = false; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+boolean isMultipleChoice = false;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
-class AddQuestion implements Scene { //<>// //<>//
+class AddQuestion implements Scene { 
   Textarea headerText1;
 
   void inizializeControl() {
@@ -176,6 +176,12 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
 public void Create() {
   String questionName = cp5.get(Textfield.class, "Spørgsmål:").getText();
   String correctAnswer = "";
+  String query = "SELECT * FROM Tests";
+  int testId = 1;
+  db.query(query);
+  while(db.next()) {
+    testId++;
+  }
   if (isMultipleChoice) {
     String answer1 = cp5.get(Textfield.class, "Svar1").getText();
     String answer2 = cp5.get(Textfield.class, "Svar2").getText();
@@ -187,11 +193,11 @@ public void Create() {
         correctAnswer = cp5.get(Textfield.class, "Svar"+(i+1)).getText();
       }
     }
-    queries.add("INSERT INTO Questions (QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice, TestId) VALUES (" + db.escape(questionName) +  ", " + db.escape(answer1) + ", " + db.escape(answer2) + ", " + db.escape(answer3) + ", " + db.escape(answer4) + ", " + db.escape(correctAnswer) + ", " + isMultipleChoice + ", 0)");
+    queries.add("INSERT INTO Questions (QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice, TestId) VALUES (" + db.escape(questionName) +  ", " + db.escape(answer1) + ", " + db.escape(answer2) + ", " + db.escape(answer3) + ", " + db.escape(answer4) + ", " + db.escape(correctAnswer) + ", " + isMultipleChoice + ", " + testId + ")");
     changeScene(currentScene, 4);
   } else {
     correctAnswer = cp5.get(Textfield.class, "Svar").getText();
-    queries.add("INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", 0)");
+    queries.add("INSERT INTO Questions (QuestionName, CorrectAnswer, IsMultipleCHoice, TestId) VALUES (" + db.escape(questionName) + ", " + db.escape(correctAnswer) + ", " + testId + ")");
     changeScene(currentScene, 4);
   }
 }

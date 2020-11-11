@@ -125,7 +125,6 @@ public void MakeTest() {
   if (selectedTeam.length()>0 && testName.length()>0) {
     for (String q : queries) {
       //db.query(q);
-      println(q);
     }
   }
 }

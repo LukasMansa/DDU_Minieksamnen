@@ -37,13 +37,13 @@ void draw() {
   background(#ebebeb);
 }
 
-void changeScene(int fromIndex, int toIndex) { //<>// //<>//
-   //<>// //<>//
-  scenes[fromIndex].removeControl(); //<>// //<>// //<>//
-  scenes[toIndex].inizializeControl(); //<>// //<>// //<>//
-  currentScene = toIndex; //<>// //<>// //<>// //<>// //<>//
-   //<>// //<>//
-} //<>// //<>// //<>// //<>//
+void changeScene(int fromIndex, int toIndex) { //<>//
+   //<>//
+  scenes[fromIndex].removeControl(); //<>// //<>//
+  scenes[toIndex].inizializeControl(); //<>// //<>//
+  currentScene = toIndex; //<>// //<>// //<>// //<>//
+   //<>//
+} //<>// //<>// //<>//
 
 
 void changeScene(Scene toScene) {
