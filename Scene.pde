@@ -8,7 +8,6 @@ public class FrontPage implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Login") // makes the button that logs in
-      .setValue(100)
       .setPosition(width/2 - 100, 300)
       .setSize(200, 19)
       .setColorBackground(0xff161759)
