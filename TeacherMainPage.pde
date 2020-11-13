@@ -1,6 +1,6 @@
 Textarea yourTests1; //<>//
 Textarea yourTests2;
-
+int testId;
 public class TeacherMainPage implements Scene {
   Textarea yourTests;
 
@@ -108,6 +108,7 @@ public void Status1() {
     .setPosition(width/2+80, height/2)
     .setSize(200, 25)
     ;
+  db.query("UPDATE Status SET Status = '1' WHERE TestId = " + testId);
 }
 
 public void Status2() {
@@ -120,6 +121,7 @@ public void Status2() {
     .setPosition(width/2, height/2)
     .setSize(200, 25)
     ;
+  db.query("UPDATE Status SET Status = '2' WHERE TestId = " + testId);
 }
 
 public void Administrate() {
