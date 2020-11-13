@@ -89,6 +89,7 @@ public class TakeTest implements Scene {
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
       cp5.getController("Answer0").remove();
+      this.removeQuestion();
     }
     catch(Exception e) {
       println("Failure removing all controllers: " + e);
@@ -139,28 +140,33 @@ public class TakeTest implements Scene {
       }
       catch(Exception e) {
       }
+
+      //cp5.addTextfield("Answer0").setPosition(-100, -100);
+
+      if (!db.getBoolean("IsMultipleChoice")) {
+        // insert textArea to answer to
+
+        cp5.addTextfield("Answer0")
+          .setPosition(300, 450)
+          .setSize(200, 40)
+          .setFocus(false)
+          .setColor(color(#ebebeb))
+          .setColorCaptionLabel(color(#4e4f4a))
+          .setCaptionLabel("Svar")
+          ;
+      }
     } else {
-
       removeQuestion();
-    }
-
-    cp5.addTextfield("Answer0").setPosition(-100, -100);
-
-    if (!db.getBoolean("IsMultipleChoice")) {
-      // insert textArea to answer to
-
-      cp5.addTextfield("Answer0")
-        .setPosition(300, 450)
-        .setSize(200, 40)
-        .setFocus(false)
-        .setColor(color(#ebebeb))
-        .setColorCaptionLabel(color(#4e4f4a))
-        .setCaptionLabel("Svar")
-        ;
     }
   }
 
   void removeQuestion() {
+
+    try {
+    }
+    catch(Exception e) {
+    }
+
     try {
       cp5.getController("nextQuestion").remove();
       removeRadio();
@@ -169,11 +175,12 @@ public class TakeTest implements Scene {
     catch(Exception e) {
       println("Failure removing questions: " + e);
     }
+
     try {
       cp5.getController("Answer0").remove();
-      theQuestion.remove();
     }
     catch(Exception e) {
+      println("Failure removing answer box: "+e);
     }
   }
 
@@ -208,7 +215,6 @@ public void nextQuestion() {
   if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
     studentScore++;
   }
-
 
   if (!db.getBoolean("IsMultipleChoice")) {
     println("here");
