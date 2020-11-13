@@ -1,4 +1,4 @@
-import controlP5.*;
+import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
 ControlP5 cp5;
@@ -26,10 +26,11 @@ void setup() {
   // db.query(makeSomeUsers);
   //  db.query(showUsers);  
   //while(db.next()) {
-    //    println(db.getString(2));
+  //    println(db.getString(2));
   // }
 
   cp5= new ControlP5(this);
+  cp5.setFont(createFont("Arial", 14), 14);
 
   scenes[currentScene].inizializeControl();
 }
@@ -38,13 +39,13 @@ void draw() {
   background(#ebebeb);
 }
 
-void changeScene(int fromIndex, int toIndex) { //<>// //<>//
-   //<>// //<>//
-  scenes[fromIndex].removeControl(); //<>// //<>// //<>//
-  scenes[toIndex].inizializeControl(); //<>// //<>// //<>//
-  currentScene = toIndex; //<>// //<>// //<>// //<>// //<>//
-   //<>// //<>//
-} //<>// //<>// //<>// //<>//
+void changeScene(int fromIndex, int toIndex) { //<>//
+  //<>//
+  scenes[fromIndex].removeControl(); //<>// //<>//
+  scenes[toIndex].inizializeControl(); //<>// //<>//
+  currentScene = toIndex; //<>// //<>// //<>// //<>//
+  //<>//
+} //<>// //<>// //<>//
 
 
 void changeScene(Scene toScene) {
