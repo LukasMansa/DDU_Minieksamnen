@@ -1,4 +1,4 @@
-String testName = "";
+String testName = ""; //<>// //<>// //<>//
 Textarea errorMessage;
 LinkedList<String> queries = new LinkedList<String>();
 class AddTest implements Scene {
@@ -11,21 +11,21 @@ class AddTest implements Scene {
       .setFont(createFont("arial", 10))
       .setPosition(width*0.1, height*0.1)
       .setSize(75, 25)
-      .setBroadcast(false) //<>//
-      .setValue(3) //<>//
+      .setBroadcast(false)
+      .setValue(3)
       .setBroadcast(true)
       ;
 
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
       .setFont(createFont("arial", 10))
-      .setPosition(width*0.9, 75) //<>//
+      .setPosition(width*0.9, 75)
       .setSize(75, 25)
       ;
     cp5.addTextfield("TestName")
       .setCaptionLabel("Test navn")
       .setFont(createFont("arial", 10))
-
+      ;
     cp5.addTextfield("Test navn")
       .setText(testName)
       .setPosition(width/2 - 100, 100)
@@ -38,7 +38,7 @@ class AddTest implements Scene {
     cp5.addButton("ChooseTeam")  //Her skal man kunne vælge klasser som man underviser i.
       .setCaptionLabel("Vælg hold")
       .setFont(createFont("arial", 10))
-
+      ;
     cp5.addButton("Hold")  //Her skal man kunne vælge klasser som man underviser i.
       .setCaptionLabel("Vælg Hold")
       .setPosition(width/2, 300) //Vis bogstav æ i vÆlg hold.
@@ -79,6 +79,7 @@ class AddTest implements Scene {
     cp5.addButton("Save")
       .setCaptionLabel("Gem")
       .setFont(createFont("arial", 10))
+      ;
     cp5.addButton("Gem")
       .setCaptionLabel("Gem test navn")
       .setPosition(width/2-100, 300)
