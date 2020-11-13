@@ -88,6 +88,7 @@ public class TakeTest implements Scene {
       theQuestion.remove();
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
+      cp5.getController("Answer0").remove();
     }
     catch(Exception e) {
       println("Failure removing all controllers: " + e);
@@ -95,7 +96,6 @@ public class TakeTest implements Scene {
   }
 
   void inizializeQuestion() {
-    //db.next();
     if (db.next()) {
       try {
         cp5.addButton("nextQuestion")
@@ -143,6 +143,21 @@ public class TakeTest implements Scene {
 
       removeQuestion();
     }
+
+    cp5.addTextfield("Answer0").setPosition(-100, -100);
+
+    if (!db.getBoolean("IsMultipleChoice")) {
+      // insert textArea to answer to
+
+      cp5.addTextfield("Answer0")
+        .setPosition(300, 450)
+        .setSize(200, 40)
+        .setFocus(false)
+        .setColor(color(#ebebeb))
+        .setColorCaptionLabel(color(#4e4f4a))
+        .setCaptionLabel("Svar")
+        ;
+    }
   }
 
   void removeQuestion() {
@@ -154,23 +169,27 @@ public class TakeTest implements Scene {
     catch(Exception e) {
       println("Failure removing questions: " + e);
     }
+    try {
+      cp5.getController("Answer0").remove();
+      theQuestion.remove();
+    }
+    catch(Exception e) {
+    }
   }
 
   void removeRadio() {
-    
     RB.removeItem(db.getString("Answer1").toLowerCase());
     RB.removeItem(db.getString("Answer2").toLowerCase());
     RB.removeItem(db.getString("Answer3").toLowerCase());
     RB.removeItem(db.getString("Answer4").toLowerCase());
-    println("Remove Radio");
   }
 }
 
 public void Afslut() {
-   TakeTest TT = (TakeTest) scenes[2];
+  TakeTest TT = (TakeTest) scenes[2];
   String Quary = "INSERT INTO Scores (TestId, StudentId, Score) VALUES (" +TT.testID+ ", " + personID +", " + studentScore +")";
   db.query(Quary);
-  
+
   println("Student test terminated");
   changeScene(currentScene, 0);
 }
@@ -183,15 +202,29 @@ int studentScore;
 
 public void nextQuestion() {
   TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
-  // get the students answer
-  // get the true answer with SQL
-  // compare the two
-  // add zero or one to the int;
-  println(TT.RB.getState(db.getString("CorrectAnswer").toLowerCase()));
+  // get the students answer, get the true answer with SQL, compare the two, add zero or one to the int;
+  //println(TT.RB.getState(db.getString("CorrectAnswer").toLowerCase()));
 
   if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
     studentScore++;
   }
+
+
+  if (!db.getBoolean("IsMultipleChoice")) {
+    println("here");
+    String trueAnswer = db.getString("CorrectAnswer").toLowerCase();
+    String studAnswer = "";
+    studAnswer = cp5.get(Textfield.class, "Answer0").getText();
+
+    println(trueAnswer, studAnswer );
+
+    println(trueAnswer, studAnswer);
+    if (trueAnswer.equals(studAnswer)) {
+      println("was true");
+      studentScore++;
+    }
+  }
+
   // once the test is done, send the score via SQL to Scores table
 
   try {
