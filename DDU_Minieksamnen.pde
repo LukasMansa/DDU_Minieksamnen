@@ -4,10 +4,10 @@ import java.util.*;
 ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
-int personID;
+int personID = 4;
 
 Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics()}; 
-int currentScene = 0;
+int currentScene = 5;
 SQLite db;
 Encryption encrypt;
 
@@ -19,14 +19,14 @@ void setup() {
   // terminates the program if there is no connection.
   assert db.connect(): 
   "Connection failed";
-
+  db.query("UPDATE Tests SET Status = 0");
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Students";
   ////String[] tableNames = db.getTableNames();
   // db.query(makeSomeUsers);
   //  db.query(showUsers);  
   //while(db.next()) {
-    //    println(db.getString(2));
+  //    println(db.getString(2));
   // }
 
   cp5= new ControlP5(this);
@@ -38,17 +38,20 @@ void draw() {
   background(#ebebeb);
 }
 
-void changeScene(int fromIndex, int toIndex) { //<>// //<>//
-   //<>// //<>//
-  scenes[fromIndex].removeControl(); //<>// //<>// //<>//
-  scenes[toIndex].inizializeControl(); //<>// //<>// //<>//
+void changeScene(int fromIndex, int toIndex) { //<>//
+  //<>//
+  scenes[fromIndex].removeControl(); //<>// //<>//
+  scenes[toIndex].inizializeControl(); //<>// //<>//
   currentScene = toIndex; //<>// //<>// //<>// //<>// //<>//
-   //<>// //<>//
-} //<>// //<>// //<>// //<>//
+} //<>// //<>// //<>//
 
 
 void changeScene(Scene toScene) {
   scenes[currentScene].removeControl();
   toScene.inizializeControl();
   currentScene = 0;
+}
+
+void reset() {
+  cp5 = new ControlP5(this);
 }

@@ -111,10 +111,10 @@ public void Gem() {
   if (testName.length()>0) {
     errorMessage.setText("");
     if (queries.size() == 0) {
-      queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+      queries.add("INSERT INTO Tests (TestName, Status, Class, TeacherId) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ", " + personID + ")");
     } else {
       queries.removeFirst();
-      queries.addFirst("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+      queries.addFirst("INSERT INTO Tests (TestName, Status, Class, TeacherId) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ", " + personID + ")");
     }
   } else {
     errorMessage.setText("Fejl: Test har intet navn");
@@ -125,6 +125,7 @@ public void MakeTest() {
   if (selectedTeam.length()>0 && testName.length()>0) {
     for (String q : queries) {
       db.query(q);
+
     }
   }
 }
