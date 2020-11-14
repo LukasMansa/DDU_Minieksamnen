@@ -4,10 +4,10 @@ import java.util.*;
 ControlP5 cp5;
 
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
-int personID = 4;
+int personID;
 
 Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics()}; 
-int currentScene = 5;
+int currentScene = 0;
 SQLite db;
 Encryption encrypt;
 

@@ -27,7 +27,7 @@ public class TeacherMainPage implements Scene {
 
     yourTests = cp5.addTextarea("txt")
       .setPosition(100, 100)
-      .setSize(200, 200)
+      .setSize(300, 100)
       .setFont(createFont("arial", 42))
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
@@ -42,7 +42,7 @@ public class TeacherMainPage implements Scene {
       if (db.getInt("Status") == 0) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(100, 50)
+          .setSize(50, 25)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -51,7 +51,7 @@ public class TeacherMainPage implements Scene {
       } else if (db.getInt("Status") == 1) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(50, 50)
+          .setSize(50, 25)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -59,7 +59,7 @@ public class TeacherMainPage implements Scene {
           );
         admin.add(cp5.addButton("Administrate"+admin.size())
           .setPosition(310+250*i, 250)
-          .setSize(50, 50)
+          .setSize(75, 25)
           .setBroadcast(false)
           .setValue(1)
           .setBroadcast(true)
@@ -67,7 +67,7 @@ public class TeacherMainPage implements Scene {
       } else if (db.getInt("Status") == 2) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(50, 50)
+          .setSize(50, 25)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -75,7 +75,7 @@ public class TeacherMainPage implements Scene {
           );
         checkAnswers.add(cp5.addButton("CheckAnswer"+checkAnswers.size())
           .setPosition(310+250*i, 250)
-          .setSize(50, 50)
+          .setSize(75, 25)
           .setBroadcast(false)
           .setValue(2)
           .setBroadcast(true)
@@ -89,7 +89,7 @@ public class TeacherMainPage implements Scene {
           .setLineHeight(14)
           .setColor(color(#4e4f4a))
           );
-        testNames.get(i).setText(db.getString(2)+db.getInt("Status"));
+        testNames.get(i).setText(db.getString(2));
       } else {
         i--;
       }
@@ -127,8 +127,4 @@ public class TeacherMainPage implements Scene {
 
 public void NewTest() {
   changeScene(currentScene, 4);
-}
-
-public void Test() {
-  println("hello");
 }

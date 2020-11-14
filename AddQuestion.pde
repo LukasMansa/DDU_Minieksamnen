@@ -1,4 +1,4 @@
-int isMultipleChoice = 0;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+int isMultipleChoice = 0;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { 
@@ -160,42 +160,44 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
     } else {
       isMultipleChoice = 1;
     }
-  } 
-  String query = "SELECT * FROM Tests";
-  db.query(query);
-  for (int i = 0; db.next(); i++) { //<>//
-    if (db.getInt("Status")<3) { //<>//
-      if(tests.size()>0) {
-      if (theEvent.isFrom(tests.get(i))) { //<>// //<>//
-        tests.get(i).setBroadcast(false); //<>//
-        tests.get(i).setValue(tests.get(i).getValue()+1); //<>//
-        tests.get(i).setBroadcast(true); //<>//
-        query = "UPDATE Tests SET Status = " + tests.get(i).getValue() + " WHERE TestId = " + db.getInt("TestId"); //<>//
-        db.query(query); //<>//
-        scenes[5].removeControl(); //<>//
-        scenes[5].inizializeControl(); //<>//
-        //query = "SELECT * FROM Tests";
-        //db.query(query);
-        //for (int j = 0; db.next(); j++) {
-        //  if (db.getInt("Status") == 1) {
-        //    tests.get(i).setCaptionLabel("Afslut test");
+  }
+  if (theEvent.getName() != "Login") {
+    String query = "SELECT * FROM Tests";
+    db.query(query);
+    println(theEvent.getName());
+    for (int i = 0; db.next(); i++) {
+      if (db.getInt("Status")<3) {
+        if (tests.size()>0) {
+          if (theEvent.isFrom(tests.get(i))) { //<>//
+            tests.get(i).setBroadcast(false);
+            tests.get(i).setValue(tests.get(i).getValue()+1);
+            tests.get(i).setBroadcast(true);
+            query = "UPDATE Tests SET Status = " + tests.get(i).getValue() + " WHERE TestId = " + db.getInt("TestId");
+            db.query(query);
+            scenes[5].removeControl();
+            scenes[5].inizializeControl();
+            //query = "SELECT * FROM Tests";
+            //db.query(query);
+            //for (int j = 0; db.next(); j++) {
+            //  if (db.getInt("Status") == 1) {
+            //    tests.get(i).setCaptionLabel("Afslut test");
 
-        //    admin.add(cp5.addButton("Administrate"+i)
-        //      .setPosition(310+250*i, 250)
-        //      .setSize(50, 50)
-        //      .setBroadcast(false)
-        //      .setValue(1)
-        //      .setBroadcast(true)
-        //      );
-        //  }
-        //}
+            //    admin.add(cp5.addButton("Administrate"+i)
+            //      .setPosition(310+250*i, 250)
+            //      .setSize(50, 50)
+            //      .setBroadcast(false)
+            //      .setValue(1)
+            //      .setBroadcast(true)
+            //      );
+            //  }
+            //}
+          }
+        }
+      } else {
+        i--;
       }
-      }
-    } else {
-      i--;
     }
   }
-
   for (int i = 0; i<classes.size(); i++) {
     if (theEvent.isFrom("class"+classes.get(i))) {
       selectedTeam = classes.get(i);
