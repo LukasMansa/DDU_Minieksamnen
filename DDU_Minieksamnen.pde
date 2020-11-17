@@ -30,6 +30,7 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
+  cp5.setFont(createFont("Arial", 14), 14);
 
   scenes[currentScene].inizializeControl();
 }
@@ -43,6 +44,7 @@ void changeScene(int fromIndex, int toIndex) {
   scenes[toIndex].inizializeControl(); 
   currentScene = toIndex;
 } 
+
 
 void changeScene(Scene toScene) {
   scenes[currentScene].removeControl();
