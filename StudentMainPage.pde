@@ -1,3 +1,4 @@
+ArrayList<Button> studentTests = new ArrayList<Button>();
 public class StudentMainPage implements Scene {
   Textarea yourTest;
 
@@ -30,11 +31,11 @@ public class StudentMainPage implements Scene {
     db.query(query);
     for (int i = 0; db.next(); i++) {
       if (db.getInt("Status") == 1) {
-        tests.add(cp5.addButton("TestStatus"+i)
+        studentTests.add(cp5.addButton("Test"+i)
           .setBroadcast(false)
           .setPosition(250+250*i, 250)
           .setSize(50, 25)
-          .setValue(db.getInt("Status"))
+          .setValue(db.getInt("TestId"))
           .setCaptionLabel("Tag test")
           .setBroadcast(true)
           );
@@ -56,13 +57,13 @@ public class StudentMainPage implements Scene {
     try {
       yourTest.remove();
       cp5.getController("Logout").remove();
-      for (int i = 0; i<tests.size(); i++) {
-        cp5.getController("TestStatus"+i).remove();
+      for (int i = 0; i<studentTests.size(); i++) {
+        cp5.getController("Test"+i).remove();
       }
       for (int i = 0; i<testNames.size(); i++) {
           testNames.get(i).remove();
       }
-      tests.clear();
+      studentTests.clear();
       testNames.clear();
     }
     catch(Exception e) {
