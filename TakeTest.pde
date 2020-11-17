@@ -81,15 +81,16 @@ public class TakeTest implements Scene {
 
   void removeControl() {
     try {
+      this.removeQuestion();
+      theQuestion.remove();
       cp5.getController("Logout").remove();
       cp5.getController("Back").remove(); 
       cp5.getController("Afslut").remove(); 
-      removeRadio(); 
-      theQuestion.remove();
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
-      cp5.getController("Answer0").remove();
       this.removeQuestion();
+      removeRadio();
+      cp5.getController("Answer0").remove();
     }
     catch(Exception e) {
       println("Failure removing all controllers: " + e);
@@ -169,8 +170,8 @@ public class TakeTest implements Scene {
 
     try {
       cp5.getController("nextQuestion").remove();
-      removeRadio();
       theQuestion.remove();
+      removeRadio();
     }
     catch(Exception e) {
       println("Failure removing questions: " + e);
@@ -185,20 +186,26 @@ public class TakeTest implements Scene {
   }
 
   void removeRadio() {
-    RB.removeItem(db.getString("Answer1").toLowerCase());
-    RB.removeItem(db.getString("Answer2").toLowerCase());
-    RB.removeItem(db.getString("Answer3").toLowerCase());
-    RB.removeItem(db.getString("Answer4").toLowerCase());
+    try {
+    
+      RB.removeItem(db.getString("Answer1").toLowerCase());
+      RB.removeItem(db.getString("Answer2").toLowerCase());
+      RB.removeItem(db.getString("Answer3").toLowerCase());
+      RB.removeItem(db.getString("Answer4").toLowerCase());
+      
+    }
+    catch(Exception e) {
+      println("Failure removing radio buttons: " + e);
+    }
   }
 }
 
 public void Afslut() {
+  changeScene(currentScene, 0);
+  
   TakeTest TT = (TakeTest) scenes[2];
   String Quary = "INSERT INTO Scores (TestId, StudentId, Score) VALUES (" +TT.testID+ ", " + personID +", " + studentScore +")";
   db.query(Quary);
-
-  println("Student test terminated");
-  changeScene(currentScene, 0);
 }
 
 public void Back(int theValue) {
