@@ -19,7 +19,7 @@ void setup() {
   // terminates the program if there is no connection.
   assert db.connect(): 
   "Connection failed";
-
+  db.query("UPDATE Tests SET Status = 0");
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Students";
   ////String[] tableNames = db.getTableNames();
@@ -39,6 +39,7 @@ void draw() {
   background(#ebebeb);
 }
 
+
 void changeScene(int fromIndex, int toIndex) {
   scenes[fromIndex].removeControl(); 
   scenes[toIndex].inizializeControl(); 
@@ -50,4 +51,8 @@ void changeScene(Scene toScene) {
   scenes[currentScene].removeControl();
   toScene.inizializeControl();
   currentScene = 0;
+}
+
+void reset() {
+  cp5 = new ControlP5(this);
 }

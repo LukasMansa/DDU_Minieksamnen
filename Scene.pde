@@ -65,6 +65,7 @@ public void Login() {
     db.query(query);
     if (db.next()) {
       println("Login Successful");
+      personID = db.getInt(1);
       if (!db.getBoolean("isTeacher")) {
         changeScene(0, 1);
       } else {

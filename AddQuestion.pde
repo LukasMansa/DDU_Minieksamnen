@@ -1,3 +1,4 @@
+
 int isMultipleChoice = 0;   //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
@@ -42,7 +43,7 @@ class AddQuestion implements Scene {
       .setSpacingRow(50)
       .addItem("Is this multiple choice?", 0)
       ;
-    //<>//
+
     cp5.addTextfield("Svar")
       .setPosition(width/2 - 100, 400)
       .setSize(200, 40)
@@ -58,7 +59,6 @@ class AddQuestion implements Scene {
       .setColor(color(128))
       ;
     headerText1.setText("Opret spørgsmål");
-
   }
 
   void removeControl() {
@@ -86,7 +86,6 @@ class AddQuestion implements Scene {
       }
     } 
     catch(Exception e) {
-
     }
   }
 }
@@ -98,7 +97,7 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
       cp5.addTextfield("Svar1")
         .setPosition(width/2-200, 400)
         .setSize(200, 40)
-        .setColor(color(#ebebeb)) //<>//
+        .setColor(color(#ebebeb))
         .setColorCaptionLabel(color(#4e4f4a))
         ;
       cp5.addTextfield("Svar2")
@@ -157,21 +156,71 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
         .setColorCaptionLabel(color(#4e4f4a))
         ;
     }
-    if(MultipleChoiceButton.getState(0)== false) {
-          isMultipleChoice = 0;
+    if (MultipleChoiceButton.getState(0)== false) {
+      isMultipleChoice = 0;
     } else {
       isMultipleChoice = 1;
     }
+  }
+  if (currentScene == 5) {
+    if (theEvent.getName() != "Login") {
+      String query = "SELECT * FROM Tests";
+      db.query(query);
+      for (int i = 0; db.next(); i++) {
+        if (db.getInt("Status")<3) {
+          if (tests.size()>0) {
+            if (theEvent.isFrom(tests.get(i))) {
+              tests.get(i).setBroadcast(false);
+              tests.get(i).setValue(tests.get(i).getValue()+1);
+              tests.get(i).setBroadcast(true);
+              query = "UPDATE Tests SET Status = " + tests.get(i).getValue() + " WHERE TestId = " + db.getInt("TestId");
+              db.query(query);
+              scenes[5].removeControl();
+              scenes[5].inizializeControl();
+              //query = "SELECT * FROM Tests";
+              //db.query(query);
+              //for (int j = 0; db.next(); j++) {
+              //  if (db.getInt("Status") == 1) {
+              //    tests.get(i).setCaptionLabel("Afslut test");
 
+              //    admin.add(cp5.addButton("Administrate"+i)
+              //      .setPosition(310+250*i, 250)
+              //      .setSize(50, 50)
+              //      .setBroadcast(false)
+              //      .setValue(1)
+              //      .setBroadcast(true)
+              //      );
+              //  }
+              //}
+            }
+          }
+          if (studentTests.size()>0) {
+            if (theEvent.isFrom(studentTests.get(i))) {
+            }
+          }
+        } else {
+          i--;
+        }
+      }
+    }
+  }
+  if (currentScene==1) {
+    for (int i = 0; i<studentTests.size(); i++) {
+      if (theEvent.isFrom(studentTests.get(i))) {
+        int testId = (int) studentTests.get(i).getValue();
+        scenes[2] = new TakeTest(testId);
+        changeScene(currentScene, 2);
+      }
+    }
   }
   for (int i = 0; i<classes.size(); i++) {
     if (theEvent.isFrom("class"+classes.get(i))) {
       selectedTeam = classes.get(i);
       if (queries.size() == 0) {
-        queries.add("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+        queries.add("INSERT INTO Tests (TestName, Status, Class, TeacherId) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ", " + personID + ")");
       } else {
         queries.removeFirst();
-        queries.addFirst("INSERT INTO Tests (TestName, Status, Class) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ")");
+        queries.addFirst("INSERT INTO Tests (TestName, Status, Class, TeacherId) VALUES (" + db.escape(testName) + ", 0, " + db.escape(selectedTeam) + ", " + personID + ")");
       }
       changeScene(currentScene, 4);
     }
@@ -184,7 +233,7 @@ public void Create() {
   String query = "SELECT * FROM Tests";
   int testId = 1;
   db.query(query);
-  while(db.next()) {
+  while (db.next()) {
     testId++;
   }
   if (isMultipleChoice == 1) {
