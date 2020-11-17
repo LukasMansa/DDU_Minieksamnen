@@ -47,30 +47,15 @@ public class TakeTest implements Scene {
       .setColor(color(#4e4f4a))
       ;
 
-
-    //String testTest = "INSERT INTO Tests (TestName,TestId, Status) VALUES ('Matematik #1',1,0)";
-    //db.query(testTest);
-
-    //String questionTest = "INSERT INTO Questions (TestId,QuestionName, Answer1, Answer2, Answer3, Answer4, CorrectAnswer, IsMultipleChoice) "+
-    //                      "values(1,'What is a seagull?', 'An animal', 'A plant', 'A fungus', 'A seahorse', 'An Animal', 0) ";
-
-    //db.query(questionTest);
-
     { 
       String query = "SELECT * FROM Tests WHERE TestId='" + this.testID + "'";
       db.query(query);
-      printArray(db.getTableNames());
+      //printArray(db.getTableNames());
 
       testTitle.setText(db.getString("TestName"));
 
       query = "SELECT * FROM Questions WHERE TestId='" + this.testID + "'";
       db.query(query);
-
-      //println(db.getString("QuestionName"));
-
-      //while(db.next()){
-      //println(db.getString("QuestionName"));
-      //}
       try {
         inizializeQuestion();
       }
@@ -187,12 +172,10 @@ public class TakeTest implements Scene {
 
   void removeRadio() {
     try {
-    
       RB.removeItem(db.getString("Answer1").toLowerCase());
       RB.removeItem(db.getString("Answer2").toLowerCase());
       RB.removeItem(db.getString("Answer3").toLowerCase());
       RB.removeItem(db.getString("Answer4").toLowerCase());
-      
     }
     catch(Exception e) {
       println("Failure removing radio buttons: " + e);
@@ -217,23 +200,20 @@ int studentScore;
 public void nextQuestion() {
   TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
   // get the students answer, get the true answer with SQL, compare the two, add zero or one to the int;
-  //println(TT.RB.getState(db.getString("CorrectAnswer").toLowerCase()));
 
   if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
     studentScore++;
   }
 
   if (!db.getBoolean("IsMultipleChoice")) {
-    println("here");
     String trueAnswer = db.getString("CorrectAnswer").toLowerCase();
     String studAnswer = "";
     studAnswer = cp5.get(Textfield.class, "Answer0").getText();
 
-    println(trueAnswer, studAnswer );
-
-    println(trueAnswer, studAnswer);
+    //println(trueAnswer, studAnswer );
+    //println(trueAnswer, studAnswer);
     if (trueAnswer.equals(studAnswer)) {
-      println("was true");
+      //println("was true");
       studentScore++;
     }
   }
