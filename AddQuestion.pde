@@ -165,7 +165,6 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
     if (theEvent.getName() != "Login") {
       String query = "SELECT * FROM Tests";
       db.query(query);
-      println(theEvent.getName());
       for (int i = 0; db.next(); i++) {
         if (db.getInt("Status")<3) {
           if (tests.size()>0) {
