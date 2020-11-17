@@ -200,10 +200,11 @@ int studentScore;
 public void nextQuestion() {
   TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
   // get the students answer, get the true answer with SQL, compare the two, add zero or one to the int;
-
+if(db.getBoolean("IsMultipleChoice")) {
   if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
     studentScore++;
   }
+}
 
   if (!db.getBoolean("IsMultipleChoice")) {
     String trueAnswer = db.getString("CorrectAnswer").toLowerCase();
