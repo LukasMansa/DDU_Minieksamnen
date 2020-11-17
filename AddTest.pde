@@ -35,7 +35,7 @@ class AddTest implements Scene {
 
     this.headerText2 = cp5.addTextarea("ht2")
       .setPosition(width/2, 250)
-      .setSize(100, 50)
+      .setSize(150, 50)
       .setFont(createFont("arial", 12))
       .setLineHeight(12)
       .setColor(color(128))
@@ -66,12 +66,13 @@ class AddTest implements Scene {
       .setCaptionLabel("Gem test navn")
       .setPosition(width/2-100, 300)
       .setSize(75, 25)
+      .setFont(createFont("arial",9))
       ;
     if (errorMessage == null) {
       errorMessage = cp5.addTextarea("ErrorMessage")
         .setColor(color(255, 0, 0))
         .setPosition(width/2-25, 50)
-        .setSize(100, 20)
+        .setSize(200, 30)
         ;
       errorMessage.setText("");
     }

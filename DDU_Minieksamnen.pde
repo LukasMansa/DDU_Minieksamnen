@@ -30,7 +30,7 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
-  cp5.setFont(createFont("Arial", 14), 14);
+  cp5.setFont(createFont("Arial", 11), 11);
 
   scenes[currentScene].inizializeControl();
 }
@@ -38,12 +38,12 @@ void setup() {
 void draw() {
   background(#ebebeb);
 }
-
-
-void changeScene(int fromIndex, int toIndex) {
-  scenes[fromIndex].removeControl(); 
-  scenes[toIndex].inizializeControl(); 
-  currentScene = toIndex;
+ //<>//
+ //<>//
+void changeScene(int fromIndex, int toIndex) { //<>//
+  scenes[fromIndex].removeControl();  //<>//
+  scenes[toIndex].inizializeControl();  //<>//
+  currentScene = toIndex; //<>//
 } 
 
 
