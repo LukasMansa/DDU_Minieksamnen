@@ -1,7 +1,4 @@
-Textarea yourTests1; //<>//
-Textarea yourTests2;
-int testId;
-public class TeacherMainPage implements Scene {
+public class TeacherMainPage implements Scene { //<>//
   Textarea yourTests;
 
   TeacherMainPage() {
@@ -47,34 +44,6 @@ public class TeacherMainPage implements Scene {
       //.setColorForeground(color(255, 100));
       ;
     yourTests.setText("Dine Tests");
-
-
-    //Status test button
-    cp5.addButton("Status1")
-      .setCaptionLabel("Start")
-      .setFont(createFont("arial", 10))
-      .setPosition(width/2, height/2)
-      .setSize(75, 25)
-      ;
-    yourTests1 = cp5.addTextarea("txt")
-      .setPosition(width/2-200, height/2)
-      .setSize(200, 200)
-      .setFont(createFont("arial", 42))
-      .setLineHeight(14)
-      .setColor(color(#4e4f4a))
-      //.setColorBackground(color(255, 100))
-      //.setColorForeground(color(255, 100));
-      ;
-    yourTests1.setText("Lukket");
-
-    //yourTests2 = cp5.addTextarea("txt")
-    //  .setPosition(width/2-400, height/2)
-    //  .setSize(200, 200)
-    //  .setFont(createFont("arial", 42))
-    //  .setLineHeight(14)
-    //  .setColor(color(#4e4f4a))
-    //  ;
-    //yourTests2.setText("Status:");
   }
 
   void removeControl() {
@@ -91,42 +60,4 @@ public class TeacherMainPage implements Scene {
 
 public void NewTest() {
   changeScene(currentScene, 4);
-}
-
-public void Status1() {
-  yourTests1.setText("Åben");
-  cp5.getController("Status1").remove();
-  cp5.addButton("Status2")
-    .setCaptionLabel("Afslut")
-    .setFont(createFont("arial", 10))
-    .setPosition(width/2, height/2)
-    .setSize(75, 25)
-    ;
-  cp5.addButton("Administrate")
-    .setCaptionLabel("Administrer")
-    .setFont(createFont("arial", 10))
-    .setPosition(width/2+80, height/2)
-    .setSize(200, 25)
-    ;
-  db.query("UPDATE Status SET Status = '1' WHERE TestId = " + testId);
-}
-
-public void Status2() {
-  yourTests1.setText("Afsluttet");
-  cp5.getController("Status2").remove();
-  cp5.getController("Administrate").remove();
-  cp5.addButton("Answers")
-    .setCaptionLabel("Se besvarelser")
-    .setFont(createFont("arial", 10))
-    .setPosition(width/2, height/2)
-    .setSize(200, 25)
-    ;
-  db.query("UPDATE Status SET Status = '2' WHERE TestId = " + testId);
-}
-
-public void Administrate() {
-  changeScene(currentScene, 4);
-  cp5.getController("Administrate").remove();
-  cp5.getController("Status2").remove();
-  yourTests1.remove();
 }
