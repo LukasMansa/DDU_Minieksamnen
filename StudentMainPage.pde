@@ -27,10 +27,22 @@ public class StudentMainPage implements Scene {
     db.query(query);
     db.next();
     String studentClass = db.getString("Class");
+    ArrayList<Integer> testIds = new ArrayList<Integer>();
+    int nonIdenticalTests = 0;
+    query = "SELECT * FROM Scores WHERE StudentId = '" + personID + "'";
+    db.query(query);
+    while(db.next()) {
+      testIds.add(db.getInt("TestId"));
+    }
     query = "SELECT * FROM Tests WHERE Class = '" + studentClass + "'";
     db.query(query);
     for (int i = 0; db.next(); i++) {
-      if (db.getInt("Status") == 1) {
+      for(int t : testIds) {
+        if(t!=db.getInt("TestId")) {
+          nonIdenticalTests++;
+        }
+      }
+      if (db.getInt("Status") == 1 && nonIdenticalTests==testIds.size()) {
         studentTests.add(cp5.addButton("Test"+i)
           .setBroadcast(false)
           .setPosition(250+250*i, 250)
