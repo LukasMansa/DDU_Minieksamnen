@@ -49,16 +49,30 @@ void fileSelected(File selection) {
   } else {
     String newPath = new String();
     String backslash = "\\";
-    for(int i = 0; i<selection.getAbsolutePath().length(); i++) {
+    for (int i = 0; i<selection.getAbsolutePath().length(); i++) {
       newPath += selection.getAbsolutePath().charAt(i);
-      if(selection.getAbsolutePath().charAt(i) == '\\') {
+      if (selection.getAbsolutePath().charAt(i) == '\\') {
         newPath += backslash;
       }
     }
     String[][] saving;
+    String username;
+    String password;
+    String _class;
     saving = importExcel(newPath);
-       for(String s[] : saving) {
-     println(s[1]); 
+    for (String s[] : saving) {
+      if (s[1] != null) {
+        s[1] = s[1].replaceAll("\\s+", "");
+        if (s[1].length()>3) {
+          username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999)) ;
+        }
+      }
+      if (s[0] != null) {
+        if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) {
+          _class = s[0].substring(2, s[0].length()-3);
+          println(_class);
+        }
+      }
     }
   }
 }
