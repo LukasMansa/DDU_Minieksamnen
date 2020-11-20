@@ -1,4 +1,4 @@
-ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 ArrayList<Textarea> testNames = new ArrayList<Textarea>();
 ArrayList<Button> admin = new ArrayList<Button>();
 ArrayList<Button> checkAnswers = new ArrayList<Button>();
@@ -108,7 +108,7 @@ public class TeacherMainPage implements Scene {
         cp5.getController("Administrate"+i).remove();
       }
       for (int i = 0; i<testNames.size(); i++) {
-          testNames.get(i).remove(); //<>//
+          testNames.get(i).remove(); //<>// //<>//
       }
       for (int i = 0; i<checkAnswers.size(); i++) {
         cp5.getController("CheckAnswer"+i).remove();

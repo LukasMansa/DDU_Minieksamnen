@@ -1,4 +1,3 @@
-
 int isMultipleChoice = 0;   //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
