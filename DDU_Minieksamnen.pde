@@ -1,4 +1,4 @@
-import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
 ControlP5 cp5;
@@ -22,14 +22,14 @@ void setup() {
 
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Tests";
-  String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Tests';";
-  db.query(query);
-   query = "DELETE FROM Tests";
-  db.query(query);
-    query = "DELETE FROM Questions";
-  db.query(query);
-    query = "DELETE FROM Scores";
-  db.query(query);
+  //String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Tests';";
+  //db.query(query);
+  // query = "DELETE FROM Tests";
+  //db.query(query);
+  //  query = "DELETE FROM Questions";
+  //db.query(query);
+  //  query = "DELETE FROM Scores";
+  //db.query(query);
   //String[] tableNames = db.getTableNames();
   // db.query(makeSomeUsers);
   //  db.query(showUsers);  
@@ -38,12 +38,12 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
-  cp5.setFont(createFont("Arial", 11), 11); //<>// //<>//
- //<>// //<>//
-  scenes[currentScene].inizializeControl(); //<>// //<>//
-} //<>// //<>//
- //<>// //<>//
-void draw() { //<>// //<>//
+  cp5.setFont(createFont("Arial", 11), 11); //<>//
+ //<>//
+  scenes[currentScene].inizializeControl(); //<>//
+} //<>//
+ //<>//
+void draw() { //<>//
   background(#ebebeb);
 }
 
