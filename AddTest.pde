@@ -33,15 +33,6 @@ class AddTest implements Scene {
       .setSize(75, 25)
       ;
 
-    this.headerText2 = cp5.addTextarea("ht2")
-      .setPosition(width/2, 250)
-      .setSize(150, 50)
-      .setFont(createFont("arial", 12))
-      .setLineHeight(12)
-      .setColor(color(128))
-      ;
-    headerText2.setText("Hold: " + selectedTeam);
-
     cp5.addButton("Opret")  //Her skal man kunne vælge klasser som man underviser i.
       .setPosition(width/2, 400) //Vis bogstav æ i vÆlg hold.
       .setSize(75, 25)
@@ -52,15 +43,6 @@ class AddTest implements Scene {
       .setSize(75, 25)
       .setCaptionLabel("Lav Test")
       ;
-
-    this.headerText3 = cp5.addTextarea("ht3")
-      .setPosition(width/2, 350)
-      .setSize(100, 50)
-      .setFont(createFont("arial", 12))
-      .setLineHeight(12)
-      .setColor(color(128))
-      ;
-    headerText3.setText("Opret spørgsmål");
 
     cp5.addButton("Gem")
       .setCaptionLabel("Gem test navn")
@@ -76,6 +58,23 @@ class AddTest implements Scene {
         ;
       errorMessage.setText("");
     }
+     this.headerText2 = cp5.addTextarea("ht2")
+      .setPosition(width/2, 250)
+      .setSize(150, 50)
+      .setFont(createFont("arial", 12))
+      .setLineHeight(12)
+      .setColor(color(128))
+      ;
+    headerText2.setText("Hold: " + selectedTeam);
+    this.headerText3 = cp5.addTextarea("ht3")
+      .setPosition(width/2, 350)
+      .setSize(100, 50)
+      .setFont(createFont("arial", 12))
+      .setLineHeight(12)
+      .setColor(color(128))
+      ;
+    headerText3.setText("Opret spørgsmål");
+
   }
   void removeControl() {
     try {
@@ -126,7 +125,8 @@ public void MakeTest() {
   if (selectedTeam.length()>0 && testName.length()>0) {
     for (String q : queries) {
       db.query(q);
-
     }
+    testName = "";
+    changeScene(currentScene,5);
   }
 }
