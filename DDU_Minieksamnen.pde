@@ -1,6 +1,5 @@
 import java.io.*; //<>//
 import org.apache.poi.ss.usermodel.Sheet;
-
 import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
@@ -9,8 +8,8 @@ ControlP5 cp5;
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 int personID; 
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics()}; 
-int currentScene = 0;
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics(), new Import()}; 
+int currentScene = 9;
 SQLite db;
 Encryption encrypt;
 

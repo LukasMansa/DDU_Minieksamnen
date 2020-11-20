@@ -1,4 +1,4 @@
-ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 ArrayList<Textarea> testNames = new ArrayList<Textarea>();
 ArrayList<Button> admin = new ArrayList<Button>();
 ArrayList<Button> checkAnswers = new ArrayList<Button>();
@@ -18,6 +18,11 @@ public class TeacherMainPage implements Scene {
       //.setColorForeground(color(255, 100));
       ;
 
+    cp5.addButton("Import")
+      .setCaptionLabel("Importer nyt hold")
+      .setPosition(width*0.2, height*0.4)
+      .setSize(150, 25)
+      ;
     // logout button
     cp5.addButton("Logout")
       //.setFont(createFont("arial", 18))
@@ -81,7 +86,7 @@ public class TeacherMainPage implements Scene {
           .setBroadcast(true)
           );
       }
-            if (db.getInt("Status")<3) {
+      if (db.getInt("Status")<3) {
         testNames.add(cp5.addTextarea("TestName"+i)
           .setPosition(250+250*i, 200)
           .setSize(100, 50)
@@ -100,7 +105,8 @@ public class TeacherMainPage implements Scene {
     try {
       cp5.getController("NewTest").remove();
       cp5.getController("Logout").remove();
-
+      cp5.getController("Import").remove();
+      
       for (int i = 0; i<tests.size(); i++) {
         cp5.getController("TestStatus"+i).remove();
       }
@@ -108,7 +114,7 @@ public class TeacherMainPage implements Scene {
         cp5.getController("Administrate"+i).remove();
       }
       for (int i = 0; i<testNames.size(); i++) {
-          testNames.get(i).remove(); //<>// //<>//
+        testNames.get(i).remove(); //<>//
       }
       for (int i = 0; i<checkAnswers.size(); i++) {
         cp5.getController("CheckAnswer"+i).remove();
@@ -127,4 +133,8 @@ public class TeacherMainPage implements Scene {
 
 public void NewTest() {
   changeScene(currentScene, 4);
+}
+
+public void Import() {
+  changeScene(currentScene,9);
 }

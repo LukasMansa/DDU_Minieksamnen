@@ -1,3 +1,8 @@
+/*
+Denne kode er skrevet af conorblack og bruges til at importere excel-filer. 
+Koden er blevet brugt, da der ikke findes et bibliotek til processing, der kan importere .xslx filer, samt på grund af opgavens kompleksitet. 
+Alt kode i fil samt alle filer under 'code' mappen er skrevet af ham.
+*/
 SXSSFWorkbook swb=null;
 Sheet sh=null;
 InputStream inp=null;
