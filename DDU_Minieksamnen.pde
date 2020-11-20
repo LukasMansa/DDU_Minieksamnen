@@ -24,7 +24,7 @@ void setup() {
   //String showUsers = "SELECT * FROM Tests";
   //String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Tests';";
   //db.query(query);
-  //String query = "DELETE FROM Tests";
+  // query = "DELETE FROM Tests";
   //db.query(query);
   //  query = "DELETE FROM Questions";
   //db.query(query);
