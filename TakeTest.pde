@@ -19,19 +19,21 @@ public class TakeTest implements Scene {
   }
 
   void inizializeControl() {
-    cp5.addButton("Back")
-      .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
-      .setBroadcast(false)
-      .setValue(1)
-      .setBroadcast(true)
-      ;
+    // the user cannot go back. They may only end the test 
+    //cp5.addButton("Back")
+    //  .setPosition(width*0.1, height*0.1)
+    //  .setSize(45, 25)
+    //  .setBroadcast(false)
+    //  .setValue(1)
+    //  .setBroadcast(true)
+    //  ;
 
-    cp5.addButton("Logout")
-      //.setFont(createFont("arial", 18))
-      .setPosition(width*0.9, 75)
-      .setSize(75, 25)
-      ;
+    // the user cannot logout. They may only end the test 
+    //cp5.addButton("Logout") 
+    //  //.setFont(createFont("arial", 18))
+    //  .setPosition(width*0.9, 75)
+    //  .setSize(75, 25)
+    //  ;
 
     cp5.addButton("Afslut")
       //.setFont(createFont("arial", 18))
@@ -68,8 +70,8 @@ public class TakeTest implements Scene {
     try {
       this.removeQuestion();
       theQuestion.remove();
-      cp5.getController("Logout").remove();
-      cp5.getController("Back").remove(); 
+      //cp5.getController("Logout").remove();
+      //cp5.getController("Back").remove(); 
       cp5.getController("Afslut").remove(); 
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
@@ -147,23 +149,21 @@ public class TakeTest implements Scene {
   }
 
   void removeQuestion() {
-
-    try {
-    }
-    catch(Exception e) {
-    }
-
     try {
       cp5.getController("nextQuestion").remove();
       theQuestion.remove();
-      removeRadio();
+      if (db.getBoolean("IsMultipleChoice")) {
+        removeRadio();
+      }
     }
     catch(Exception e) {
       println("Failure removing questions: " + e);
     }
 
     try {
-      cp5.getController("Answer0").remove();
+      if (!db.getBoolean("IsMultipleChoice")) { 
+        cp5.getController("Answer0").remove();
+      }
     }
     catch(Exception e) {
       println("Failure removing answer box: "+e);
@@ -185,7 +185,7 @@ public class TakeTest implements Scene {
 
 public void Afslut() {
   changeScene(currentScene, 0);
-  
+
   TakeTest TT = (TakeTest) scenes[2];
   String Quary = "INSERT INTO Scores (TestId, StudentId, Score) VALUES (" +TT.testID+ ", " + personID +", " + studentScore +")";
   db.query(Quary);
@@ -200,11 +200,11 @@ int studentScore;
 public void nextQuestion() {
   TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
   // get the students answer, get the true answer with SQL, compare the two, add zero or one to the int;
-if(db.getBoolean("IsMultipleChoice")) {
-  if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
-    studentScore++;
+  if (db.getBoolean("IsMultipleChoice")) {
+    if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
+      studentScore++;
+    }
   }
-}
 
   if (!db.getBoolean("IsMultipleChoice")) {
     String trueAnswer = db.getString("CorrectAnswer").toLowerCase();
