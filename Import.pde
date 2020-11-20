@@ -56,15 +56,15 @@ void fileSelected(File selection) {
       }
     }
     String[][] saving;
-    String username;
-    String password;
-    String _class;
+    String username = null;
+    String password = "a";
+    String _class = null;
     saving = importExcel(newPath);
     for (String s[] : saving) {
       if (s[1] != null) {
         s[1] = s[1].replaceAll("\\s+", "");
-        if (s[1].length()>3) {
-          username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999)) ;
+        if (s[1].length()>3 && !s[1].contains("Fornavn")) {
+          username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999));
         }
       }
       if (s[0] != null) {
@@ -73,6 +73,8 @@ void fileSelected(File selection) {
           println(_class);
         }
       }
+      String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";
+      db.query(query);
     }
   }
 }
