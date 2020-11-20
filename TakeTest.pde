@@ -27,7 +27,7 @@ public class TakeTest implements Scene {
     //  .setValue(1)
     //  .setBroadcast(true)
     //  ;
-    
+
     // the user cannot logout. They may only end the test 
     //cp5.addButton("Logout") 
     //  //.setFont(createFont("arial", 18))
@@ -70,8 +70,8 @@ public class TakeTest implements Scene {
     try {
       this.removeQuestion();
       theQuestion.remove();
-      cp5.getController("Logout").remove();
-      cp5.getController("Back").remove(); 
+      //cp5.getController("Logout").remove();
+      //cp5.getController("Back").remove(); 
       cp5.getController("Afslut").remove(); 
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
@@ -161,7 +161,9 @@ public class TakeTest implements Scene {
     }
 
     try {
-      if (!db.getBoolean("IsMultipleChoice")) cp5.getController("Answer0").remove();
+      if (!db.getBoolean("IsMultipleChoice")) { 
+        cp5.getController("Answer0").remove();
+      }
     }
     catch(Exception e) {
       println("Failure removing answer box: "+e);
