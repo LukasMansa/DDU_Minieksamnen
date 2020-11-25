@@ -1,10 +1,9 @@
-ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>//
 ArrayList<Textarea> testNames = new ArrayList<Textarea>();
 ArrayList<Button> admin = new ArrayList<Button>();
 ArrayList<Button> checkAnswers = new ArrayList<Button>();
 public class TeacherMainPage implements Scene {
   Textarea yourTests;
-
 
   TeacherMainPage() {
   }
@@ -24,17 +23,6 @@ public class TeacherMainPage implements Scene {
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
       ;
-
-    yourTests = cp5.addTextarea("txt")
-      .setPosition(100, 100)
-      .setSize(300, 100)
-      .setFont(createFont("arial", 42))
-      .setLineHeight(14)
-      .setColor(color(#4e4f4a))
-      //.setColorBackground(color(255, 100))
-      //.setColorForeground(color(255, 100));
-      ;
-    yourTests.setText("Dine Tests");
 
     String query = "SELECT * FROM Tests WHERE TeacherId = " + personID;
     db.query(query);
@@ -73,15 +61,16 @@ public class TeacherMainPage implements Scene {
           .setBroadcast(true)
           .setCaptionLabel("Fjern test")
           );
-        checkAnswers.add(cp5.addButton("CheckAnswer"+checkAnswers.size())
+        checkAnswers.add(cp5.addButton("CheckAnswer" + checkAnswers.size())
           .setPosition(310+250*i, 250)
-          .setSize(75, 25)
+          .setSize(140, 25)
           .setBroadcast(false)
-          .setValue(2)
+          .setValue(db.getInt("TestId"))
           .setBroadcast(true)
+          .setCaptionLabel("Vis besvarelser")
           );
       }
-            if (db.getInt("Status")<3) {
+      if (db.getInt("Status")<3) {
         testNames.add(cp5.addTextarea("TestName"+i)
           .setPosition(250+250*i, 200)
           .setSize(100, 50)
@@ -94,6 +83,17 @@ public class TeacherMainPage implements Scene {
         i--;
       }
     }
+
+    yourTests = cp5.addTextarea("txt")
+      .setPosition(100, 100)
+      .setSize(300, 100)
+      .setFont(createFont("arial", 42))
+      .setLineHeight(14)
+      .setColor(color(#4e4f4a))
+      //.setColorBackground(color(255, 100))
+      //.setColorForeground(color(255, 100));
+      ;
+    yourTests.setText("Dine Tests");
   }
 
   void removeControl() {
@@ -107,11 +107,13 @@ public class TeacherMainPage implements Scene {
       for (int i = 0; i<admin.size(); i++) {
         cp5.getController("Administrate"+i).remove();
       }
-      for (int i = 0; i<testNames.size(); i++) {
-          testNames.get(i).remove(); //<>//
-      }
+
       for (int i = 0; i<checkAnswers.size(); i++) {
         cp5.getController("CheckAnswer"+i).remove();
+      }
+
+      for (int i = 0; i<testNames.size(); i++) {
+        testNames.get(i).remove();
       }
       tests.clear();
       testNames.clear();
