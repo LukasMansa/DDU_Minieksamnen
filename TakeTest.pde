@@ -19,23 +19,23 @@ public class TakeTest implements Scene {
   }
 
   void inizializeControl() {
-    cp5.addButton("Back")
-      .setCaptionLabel("Tilbage")
-      .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
-      .setBroadcast(false)
-      .setValue(1)
-      .setBroadcast(true)
-      .setColorBackground(0xff161759)
-      ;
 
-    cp5.addButton("Logout")
-      .setCaptionLabel("Log ud")
-      //.setFont(createFont("arial", 18))
-      .setPosition(width*0.9, 75)
-      .setSize(100, 50)
-      .setColorBackground(0xff161759)
-      ;
+    // the user cannot go back. They may only end the test 
+    //cp5.addButton("Back")
+    //  .setPosition(width*0.1, height*0.1)
+    //  .setSize(45, 25)
+    //  .setBroadcast(false)
+    //  .setValue(1)
+    //  .setBroadcast(true)
+    //  ;
+
+    // the user cannot logout. They may only end the test 
+    //cp5.addButton("Logout") 
+    //  //.setFont(createFont("arial", 18))
+    //  .setPosition(width*0.9, 75)
+    //  .setSize(75, 25)
+    //  ;
+
 
     cp5.addButton("Afslut")
       //.setFont(createFont("arial", 18))
@@ -73,8 +73,8 @@ public class TakeTest implements Scene {
     try {
       this.removeQuestion();
       theQuestion.remove();
-      cp5.getController("Logout").remove();
-      cp5.getController("Back").remove(); 
+      //cp5.getController("Logout").remove();
+      //cp5.getController("Back").remove(); 
       cp5.getController("Afslut").remove(); 
       testTitle.remove();
       cp5.getController("nextQuestion").remove();
@@ -152,23 +152,21 @@ public class TakeTest implements Scene {
   }
 
   void removeQuestion() {
-
-    try {
-    }
-    catch(Exception e) {
-    }
-
     try {
       cp5.getController("nextQuestion").remove();
       theQuestion.remove();
-      removeRadio();
+      if (db.getBoolean("IsMultipleChoice")) {
+        removeRadio();
+      }
     }
     catch(Exception e) {
       println("Failure removing questions: " + e);
     }
 
     try {
-      cp5.getController("Answer0").remove();
+      if (!db.getBoolean("IsMultipleChoice")) { 
+        cp5.getController("Answer0").remove();
+      }
     }
     catch(Exception e) {
       println("Failure removing answer box: "+e);

@@ -1,4 +1,6 @@
-import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import java.io.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import org.apache.poi.ss.usermodel.Sheet;
+import controlP5.*; //<>// //<>// //<>// //<>// //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
 ControlP5 cp5;
@@ -6,8 +8,9 @@ ControlP5 cp5;
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 int personID; 
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics()}; 
-int currentScene = 0;
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics(), new Import()}; 
+int currentScene = 9;
+int boxSelected = 0;
 SQLite db;
 Encryption encrypt;
 
@@ -38,12 +41,14 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
+
   cp5.setFont(createFont("Arial", 11), 11); //<>// //<>//
- //<>// //<>//
+
   scenes[currentScene].inizializeControl(); //<>// //<>//
 } //<>// //<>//
  //<>// //<>//
-void draw() { //<>// //<>//
+
+void draw() {
   background(#ebebeb);
 }
 
@@ -63,4 +68,25 @@ void changeScene(Scene toScene) {
 
 void reset() {
   cp5 = new ControlP5(this);
+}
+
+void keyPressed() {
+  if (key == ENTER) {
+    if (currentScene == 0) {
+      Login();
+    }
+  }
+  if (key == TAB) {
+    if (currentScene == 0) {
+      if (boxSelected == 0) {
+        cp5.get(Textfield.class, "Username").setFocus(false);
+        cp5.get(Textfield.class, "Password").setFocus(true);
+        boxSelected = 1;
+      } else {
+        cp5.get(Textfield.class, "Username").setFocus(true);
+        cp5.get(Textfield.class, "Password").setFocus(false);
+        boxSelected = 0;
+      }
+    }
+  }
 }

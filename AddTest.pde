@@ -62,7 +62,7 @@ class AddTest implements Scene {
 
     if (errorMessage == null) {
       errorMessage = cp5.addTextarea("ErrorMessage")
-        .setColor(color(255, 0, 0))
+        .setColor(color(#FF3636))
         .setPosition(width/2-25, 50)
         .setSize(200, 30)
         ;
