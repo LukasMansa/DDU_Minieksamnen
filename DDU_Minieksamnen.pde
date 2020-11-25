@@ -9,12 +9,14 @@ int personID;
 Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(0), new Statistics()}; 
 int currentScene = 0;
 SQLite db;
+SQLite dbTwo;
 Encryption encrypt;
 
 void setup() {
   fullScreen();
   encrypt = new Encryption();
   db = new SQLite(this, "minieksamen.db"); //setup connection to database
+  dbTwo = new SQLite(this, "minieksamen.db");
 
   // terminates the program if there is no connection.
   assert db.connect(): 
