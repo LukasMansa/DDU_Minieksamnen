@@ -18,6 +18,7 @@ class AddTest implements Scene {
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
       ;
+      
     cp5.addTextfield("Test navn")
       .setText(testName)
       .setPosition(width/2 - 100, 100)
@@ -52,7 +53,7 @@ class AddTest implements Scene {
       ;
     if (errorMessage == null) {
       errorMessage = cp5.addTextarea("ErrorMessage")
-        .setColor(color(255, 0, 0))
+        .setColor(color(#FF3636))
         .setPosition(width/2-25, 50)
         .setSize(200, 30)
         ;
