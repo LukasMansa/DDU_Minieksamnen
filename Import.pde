@@ -89,7 +89,7 @@ void fileSelected(File selection) {
  //<>// //<>//
         if (username != null && _class != null) { //<>//
           String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";
-         // db.query(query);
+          db.query(query);
           error.setText(""); //<>//
         }
       }
