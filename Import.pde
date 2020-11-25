@@ -1,4 +1,4 @@
-Textarea error; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+Textarea error; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 class Import implements Scene {
   Textarea importText;
 
@@ -26,7 +26,7 @@ class Import implements Scene {
       .setLineHeight(14)
       .setColor(color(#4e4f4a))
       ;
-    importText.setText("For at importere et hold, skal holdet være i en excel-fil (.xslx). Holdet skal være formateret præcis som Lectio formaterer, når du eksporterer et hold derfra");
+    importText.setText("For at importere et hold, skal holdet være i en excel-fil (.xslx). Holdet skal være formateret præcis som Lectio formaterer, når du eksporterer et hold derfra. Holdet skal exporteres fra Lectio uden billeder, altså almindelig visning.");
 
     if (error == null) {
       error = cp5.addTextarea("Error")
@@ -75,22 +75,22 @@ void fileSelected(File selection) {
     if (newPath.contains(".xlsx")) {
       saving = importExcel(newPath);
       for (String s[] : saving) {
-        if (s[1] != null) { //<>//
-          s[1] = s[1].replaceAll("\\s+", ""); //<>//
-          if (s[1].length()>3 && !s[1].contains("Fornavn")) { //<>//
-            username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999)); //<>//
-          } //<>//
-        } //<>//
-        if (s[0] != null) { //<>//
-          if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) { //<>//
-            _class = s[0].substring(2, s[0].length()-3); //<>// //<>//
-          } //<>//
+        if (s[1] != null) { //<>// //<>//
+          s[1] = s[1].replaceAll("\\s+", ""); //<>// //<>//
+          if (s[1].length()>3 && !s[1].contains("Fornavn")) { //<>// //<>//
+            username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999)); //<>// //<>//
+          } //<>// //<>//
+        } //<>// //<>//
+        if (s[0] != null) { //<>// //<>//
+          if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) { //<>// //<>//
+            _class = s[0].substring(2, s[0].length()-3); //<>// //<>// //<>// //<>//
+          } //<>// //<>//
         }
- //<>// //<>//
-        if (username != null && _class != null) { //<>//
+ //<>// //<>// //<>// //<>//
+        if (username != null && _class != null) { //<>// //<>//
           String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";
           db.query(query);
-          error.setText(""); //<>//
+          error.setText(""); //<>// //<>//
         }
       }
     } else {
