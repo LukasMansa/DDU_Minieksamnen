@@ -9,7 +9,9 @@ class Statistics implements Scene {
       .setBroadcast(false)
       .setValue(5)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;
+
     this.headerText1 = cp5.addTextarea("ht1")
       .setPosition(width/2-250, 100)
       .setSize(2000, 2000)
@@ -23,6 +25,7 @@ class Statistics implements Scene {
       .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
   }
   void removeControl() {

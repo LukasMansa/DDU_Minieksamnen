@@ -23,7 +23,9 @@ public class StudentMainPage implements Scene {
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;   
+
     String query = "SELECT * FROM Students WHERE Id = " + personID;
     db.query(query);
     db.next();

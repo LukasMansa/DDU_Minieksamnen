@@ -26,6 +26,7 @@ public class TakeTest implements Scene {
       .setBroadcast(false)
       .setValue(1)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("Logout")
@@ -33,12 +34,14 @@ public class TakeTest implements Scene {
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("Afslut")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 125)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     testTitle = cp5.addTextarea("txt")

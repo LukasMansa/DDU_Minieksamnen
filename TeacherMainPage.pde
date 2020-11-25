@@ -14,6 +14,7 @@ public class TeacherMainPage implements Scene {
       .setCaptionLabel("Ny Test")
       .setPosition(width*0.1, height*0.4)
       .setSize(100, 50)
+       .setColorBackground(0xff161759)
       //.setColorBackground(color(255, 100))
       //.setColorForeground(color(255, 100));
       ;
@@ -24,6 +25,7 @@ public class TeacherMainPage implements Scene {
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
+       .setColorBackground(0xff161759)
       ;
 
     yourTests = cp5.addTextarea("txt")

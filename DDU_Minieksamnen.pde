@@ -1,4 +1,4 @@
-import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
 ControlP5 cp5;
@@ -38,12 +38,12 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
-  cp5.setFont(createFont("Arial", 11), 11); //<>//
- //<>//
-  scenes[currentScene].inizializeControl(); //<>//
-} //<>//
- //<>//
-void draw() { //<>//
+  cp5.setFont(createFont("Arial", 11), 11); //<>// //<>//
+ //<>// //<>//
+  scenes[currentScene].inizializeControl(); //<>// //<>//
+} //<>// //<>//
+ //<>// //<>//
+void draw() { //<>// //<>//
   background(#ebebeb);
 }
 

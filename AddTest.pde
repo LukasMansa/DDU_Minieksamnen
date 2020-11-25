@@ -13,13 +13,16 @@ class AddTest implements Scene {
       .setBroadcast(false)
       .setValue(5)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
+
     cp5.addTextfield("Test navn")
       .setText(testName)
       .setPosition(width/2 - 100, 100)
@@ -33,17 +36,20 @@ class AddTest implements Scene {
       .setCaptionLabel("Vælg Hold")
       .setPosition(width/2, 300) //Vis bogstav æ i vÆlg hold.
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("Opret")  //Her skal man kunne vælge klasser som man underviser i.
       .setPosition(width/2, 400) //Vis bogstav æ i vÆlg hold.
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("MakeTest")
       .setPosition(width/2-75/2, height-150)
       .setSize(100, 50)
       .setCaptionLabel("Lav Test")
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addButton("Gem")
@@ -51,7 +57,9 @@ class AddTest implements Scene {
       .setPosition(width/2-150, 300)
       .setSize(100, 50)
       .setFont(createFont("arial", 9))
+      .setColorBackground(0xff161759)
       ;
+
     if (errorMessage == null) {
       errorMessage = cp5.addTextarea("ErrorMessage")
         .setColor(color(255, 0, 0))

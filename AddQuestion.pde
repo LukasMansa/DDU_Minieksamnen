@@ -1,4 +1,4 @@
- //<>//
+ //<>// //<>//
 int isMultipleChoice = 0;  
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
@@ -13,11 +13,14 @@ class AddQuestion implements Scene {
       .setBroadcast(false)
       .setValue(4)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;
+
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     cp5.addTextfield("Spørgsmål:")
@@ -32,6 +35,7 @@ class AddQuestion implements Scene {
       .setCaptionLabel("Opret")
       .setPosition(width/2-100, height/2+200)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     MultipleChoiceButton = cp5.addRadioButton("MultipleChoice")

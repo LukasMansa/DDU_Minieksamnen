@@ -11,6 +11,7 @@ class Team implements Scene {
       .setBroadcast(false)
       .setValue(4)
       .setBroadcast(true)
+      .setColorBackground(0xff161759)
       ;
     this.headerText1 = cp5.addTextarea("")
       .setPosition(width/2-100, 100)
@@ -23,6 +24,7 @@ class Team implements Scene {
       .setCaptionLabel("VLog ud")
       .setPosition(width*0.9, 75)
       .setSize(75, 25)
+      .setColorBackground(0xff161759)
       ;
     headerText1.setText("Hold:");
 
