@@ -6,8 +6,9 @@ class Results implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
+      .setSize(50, 30)
       .setBroadcast(false)
       .setValue(5)
       .setBroadcast(true)
@@ -22,8 +23,9 @@ class Results implements Scene {
     headerText1.setText(R); //Her skal der stå navnet på testen som læren selv vælger når testen oprettes.
 
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
       ;
   }
   void removeControl() {

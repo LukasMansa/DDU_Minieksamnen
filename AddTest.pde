@@ -7,16 +7,18 @@ class AddTest implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
-      .setSize(45, 25)
+      .setSize(50, 30)
       .setBroadcast(false)
       .setValue(5)
       .setBroadcast(true)
       ;
 
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
       ;
     cp5.addTextfield("Test navn")
       .setText(testName)
@@ -30,25 +32,25 @@ class AddTest implements Scene {
     cp5.addButton("Hold")  //Her skal man kunne vælge klasser som man underviser i.
       .setCaptionLabel("Vælg Hold")
       .setPosition(width/2, 300) //Vis bogstav æ i vÆlg hold.
-      .setSize(75, 25)
+      .setSize(100, 50)
       ;
 
     cp5.addButton("Opret")  //Her skal man kunne vælge klasser som man underviser i.
       .setPosition(width/2, 400) //Vis bogstav æ i vÆlg hold.
-      .setSize(75, 25)
+      .setSize(100, 50)
       ;
 
     cp5.addButton("MakeTest")
       .setPosition(width/2-75/2, height-150)
-      .setSize(75, 25)
+      .setSize(100, 50)
       .setCaptionLabel("Lav Test")
       ;
 
     cp5.addButton("Gem")
       .setCaptionLabel("Gem test navn")
-      .setPosition(width/2-100, 300)
-      .setSize(75, 25)
-      .setFont(createFont("arial",9))
+      .setPosition(width/2-150, 300)
+      .setSize(100, 50)
+      .setFont(createFont("arial", 9))
       ;
     if (errorMessage == null) {
       errorMessage = cp5.addTextarea("ErrorMessage")
@@ -58,7 +60,7 @@ class AddTest implements Scene {
         ;
       errorMessage.setText("");
     }
-     this.headerText2 = cp5.addTextarea("ht2")
+    this.headerText2 = cp5.addTextarea("ht2")
       .setPosition(width/2, 250)
       .setSize(150, 50)
       .setFont(createFont("arial", 12))
@@ -74,7 +76,6 @@ class AddTest implements Scene {
       .setColor(color(128))
       ;
     headerText3.setText("Opret spørgsmål");
-
   }
   void removeControl() {
     try {
@@ -127,6 +128,6 @@ public void MakeTest() {
       db.query(q);
     }
     testName = "";
-    changeScene(currentScene,5);
+    changeScene(currentScene, 5);
   }
 }

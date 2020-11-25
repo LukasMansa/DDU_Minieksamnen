@@ -20,6 +20,7 @@ public class TakeTest implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Back")
+      .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
       .setSize(45, 25)
       .setBroadcast(false)
@@ -28,9 +29,10 @@ public class TakeTest implements Scene {
       ;
 
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
       ;
 
     cp5.addButton("Afslut")
@@ -185,7 +187,7 @@ public class TakeTest implements Scene {
 
 public void Afslut() {
   changeScene(currentScene, 0);
-  
+
   TakeTest TT = (TakeTest) scenes[2];
   String Quary = "INSERT INTO Scores (TestId, StudentId, Score) VALUES (" +TT.testID+ ", " + personID +", " + studentScore +")";
   db.query(Quary);
@@ -200,11 +202,11 @@ int studentScore;
 public void nextQuestion() {
   TakeTest TT = (TakeTest) scenes[2]; // refactor this to refrer to the correct test
   // get the students answer, get the true answer with SQL, compare the two, add zero or one to the int;
-if(db.getBoolean("IsMultipleChoice")) {
-  if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
-    studentScore++;
+  if (db.getBoolean("IsMultipleChoice")) {
+    if (TT.RB.getState(db.getString("CorrectAnswer").toLowerCase())) {
+      studentScore++;
+    }
   }
-}
 
   if (!db.getBoolean("IsMultipleChoice")) {
     String trueAnswer = db.getString("CorrectAnswer").toLowerCase();

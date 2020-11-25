@@ -17,10 +17,11 @@ public class StudentMainPage implements Scene {
 
     // Logout button
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
       //.setFont(createFont("arial", 18))
       .setBroadcast(false)
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
       .setBroadcast(true)
       ;   
     String query = "SELECT * FROM Students WHERE Id = " + personID;
@@ -31,14 +32,14 @@ public class StudentMainPage implements Scene {
     int nonIdenticalTests = 0;
     query = "SELECT * FROM Scores WHERE StudentId = '" + personID + "'";
     db.query(query);
-    while(db.next()) {
+    while (db.next()) {
       testIds.add(db.getInt("TestId"));
     }
     query = "SELECT * FROM Tests WHERE Class = '" + studentClass + "'";
     db.query(query);
     for (int i = 0; db.next(); i++) {
-      for(int t : testIds) {
-        if(t!=db.getInt("TestId")) {
+      for (int t : testIds) {
+        if (t!=db.getInt("TestId")) {
           nonIdenticalTests++;
           println("hello");
         }
@@ -52,7 +53,7 @@ public class StudentMainPage implements Scene {
           .setCaptionLabel("Tag test")
           .setBroadcast(true)
           );
-                  testNames.add(cp5.addTextarea("TestName"+i)
+        testNames.add(cp5.addTextarea("TestName"+i)
           .setPosition(250+250*i, 200)
           .setSize(100, 50)
           .setFont(createFont("arial", 20))
@@ -75,11 +76,10 @@ public class StudentMainPage implements Scene {
         cp5.getController("Test"+i).remove();
       }
       for (int i = 0; i<testNames.size(); i++) {
-          testNames.get(i).remove();
+        testNames.get(i).remove();
       }
       studentTests.clear();
       testNames.clear();
-
     }
     catch(Exception e) {
     }
