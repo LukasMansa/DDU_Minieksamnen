@@ -8,12 +8,14 @@ public class FrontPage implements Scene {
 
   void inizializeControl() {
     cp5.addButton("Login") // makes the button that logs in
+      .setCaptionLabel("Log in")
       .setPosition(width/2 - 100, 300)
       .setSize(200, 19)
       .setColorBackground(0xff161759)
       ;
 
     cp5.addTextfield("Username")
+      .setCaptionLabel("Brugernavn")
       .setPosition(width/2 - 100, 150)
       .setSize(200, 40)
       .setFocus(true)
@@ -22,6 +24,7 @@ public class FrontPage implements Scene {
       ;
 
     cp5.addTextfield("Password")
+      .setCaptionLabel("Kode")
       .setPosition(width/2 - 100, 225)
       .setSize(200, 40)
       .setFocus(false)
@@ -39,7 +42,7 @@ public class FrontPage implements Scene {
       //.setColorBackground(color(255, 100))
       //.setColorForeground(color(255, 100));
       ;
-    headerText.setText("H.C. Ørsted gymnatiet: Test af faglige evner");
+    headerText.setText("H.C. Ørsted gymnasiet: Test af faglige evner");
   }
 
   void removeControl() {

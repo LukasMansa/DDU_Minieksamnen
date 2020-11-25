@@ -41,10 +41,12 @@ void setup() {
   // }
 
   cp5= new ControlP5(this);
-  cp5.setFont(createFont("Arial", 11), 11);
 
-  scenes[currentScene].inizializeControl();
-}
+  cp5.setFont(createFont("Arial", 11), 11); //<>// //<>//
+
+  scenes[currentScene].inizializeControl(); //<>// //<>//
+} //<>// //<>//
+ //<>// //<>//
 
 void draw() {
   background(#ebebeb);
