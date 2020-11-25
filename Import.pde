@@ -55,11 +55,15 @@ void fileSelected(File selection) {
         newPath += backslash;
       }
     }
-    String[][] saving;
+    String[][] saving = null;
     String username = null;
     String password = "a";
     String _class = null;
+    if(newPath.contains(".xslx")) {
     saving = importExcel(newPath);
+    } else {
+      println("File selected is not an excel file");
+    }
     for (String s[] : saving) {
       if (s[1] != null) {
         s[1] = s[1].replaceAll("\\s+", "");
@@ -70,7 +74,6 @@ void fileSelected(File selection) {
       if (s[0] != null) {
         if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) {
           _class = s[0].substring(2, s[0].length()-3);
-          println(_class);
         }
       }
       String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";

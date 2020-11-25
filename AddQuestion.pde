@@ -1,4 +1,4 @@
-int isMultipleChoice = 0;   //<>//
+int isMultipleChoice = 0;   //<>// //<>//
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { 
