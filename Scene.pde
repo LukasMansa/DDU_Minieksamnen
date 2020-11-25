@@ -16,7 +16,7 @@ public class FrontPage implements Scene {
     cp5.addTextfield("Username")
       .setPosition(width/2 - 100, 150)
       .setSize(200, 40)
-      .setFocus(false)
+      .setFocus(true)
       .setColor(color(#ebebeb))
       .setColorCaptionLabel(color(#4e4f4a))
       ;
