@@ -16,14 +16,14 @@ class Results implements Scene {
     try {
 
       cp5.addButton("Back")
-      .setCaptionLabel("Tilbage")
-      .setPosition(width*0.1, height*0.1)
-      .setSize(100, 50)
-      .setBroadcast(false)
-      .setValue(5)
-      .setBroadcast(true)
-      .setColorBackground(0xff161759)
-      ;
+        .setCaptionLabel("Tilbage")
+        .setPosition(width*0.1, height*0.1)
+        .setSize(100, 50)
+        .setBroadcast(false)
+        .setValue(5)
+        .setBroadcast(true)
+        .setColorBackground(0xff161759)
+        ;
 
       cp5.addButton("Logout")
         .setPosition(width*0.9, 75)
@@ -90,10 +90,10 @@ class Results implements Scene {
 
     this.headerText1 = cp5.addTextarea("ht1")
       .setPosition(width/2-50, 100)
-      .setSize(200, 200)
-      .setFont(createFont("arial", 40))
-      .setLineHeight(12)
-      .setColor(color(128))
+      .setSize(400, 200)
+      .setFont(createFont("arial", 36))
+      .setLineHeight(36)
+      .setColor(color(#4e4f4a))
       ;
 
     String query = "SELECT * FROM Tests WHERE TestId ="+ testId ;
