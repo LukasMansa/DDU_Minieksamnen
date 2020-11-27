@@ -1,5 +1,5 @@
 
-int isMultipleChoice = 0;   //<>// //<>//
+int isMultipleChoice = 0;
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { 
@@ -45,6 +45,7 @@ class AddQuestion implements Scene {
       .setColorBackground(color(#ff3636))
       .setColorActive(color(#435c27))
       .setColorLabel(color(#4e4f4a))
+      
       .setItemsPerRow(2)
       .setSpacingColumn(100)
       .setSpacingRow(50)
