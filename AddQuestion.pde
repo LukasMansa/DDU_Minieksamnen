@@ -170,6 +170,14 @@ void controlEvent(ControlEvent theEvent) { //TODO: Move from AddQuestion to a mo
     }
   }
   if (currentScene == 5) {
+    
+    if(theEvent.getName().contains("CheckAnswer")){
+      println("Praise the sun " + theEvent.getValue());
+      scenes[7] = new Results((int)theEvent.getValue());
+      //scenes[7].removeControl();
+      changeScene(currentScene, 7);
+    }
+    
     if (theEvent.getName() != "Login") {
       String query = "SELECT * FROM Tests";
       db.query(query);

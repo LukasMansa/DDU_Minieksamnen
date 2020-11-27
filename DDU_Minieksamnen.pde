@@ -1,6 +1,6 @@
-import java.io.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import java.io.*;  //<>//
 import org.apache.poi.ss.usermodel.Sheet;
-import controlP5.*; //<>// //<>// //<>// //<>// //<>//
+import controlP5.*;  //<>//
 import de.bezier.data.sql.*;
 import java.util.*;
 ControlP5 cp5;
@@ -8,19 +8,25 @@ ControlP5 cp5;
 color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(#4e4f4a), color(#ebebeb)};
 int personID; 
 
-Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics(), new Import()}; 
-int currentScene = 9;
+Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(0), new Statistics(), new Import()}; 
+int currentScene = 0;
 int boxSelected = 0;
+
 SQLite db;
+SQLite dbTwo;
 Encryption encrypt;
 
 void setup() {
   fullScreen();
   encrypt = new Encryption();
   db = new SQLite(this, "minieksamen.db"); //setup connection to database
+  dbTwo = new SQLite(this, "minieksamen.db");
 
   // terminates the program if there is no connection.
   assert db.connect(): 
+  "Connection failed";
+
+  assert dbTwo.connect():
   "Connection failed";
 
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
@@ -42,11 +48,13 @@ void setup() {
 
   cp5= new ControlP5(this);
 
-  cp5.setFont(createFont("Arial", 11), 11); //<>// //<>//
+  cp5.setFont(createFont("Arial", 11), 11);
 
-  scenes[currentScene].inizializeControl(); //<>// //<>//
+  scenes[currentScene].inizializeControl();
+
+
+  //<>// //<>//
 } //<>// //<>//
- //<>// //<>//
 
 void draw() {
   background(#ebebeb);
