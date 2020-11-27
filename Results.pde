@@ -35,33 +35,28 @@ class Results implements Scene {
         .setLineHeight(12)
         .setColor(color(128))
         ;
-        
-        
-    
+
+
+
       String query = "SELECT * FROM Questions WHERE TestId = "+ testId ;
       db.query(query);
-      
+
       int questionCount = 0;
-      while(db.next()){
+      while (db.next()) {
         questionCount++;
       }
-    
-        
 
-      query = "SELECT * FROM Tests WHERE TestId ="+ testId ;
-      db.query(query);
 
-      headerText1.setText(db.getString("TestName"));
 
       query = "SELECT * FROM Scores WHERE TestId = "+ testId ;
       db.query(query);
 
 
       String temp ="";
-      for (; db.next();) {
+      for (; db.next(); ) {
         int tempId = db.getInt("StudentId");
         println(tempId);
-        
+
         query = "SELECT * FROM Students WHERE Id = " + tempId;
         dbTwo.query(query);
 
@@ -98,7 +93,12 @@ class Results implements Scene {
       .setLineHeight(12)
       .setColor(color(128))
       ;
-    //headerText1.setText(R); //Her skal der stå navnet på testen som læren selv vælger når testen oprettes.
+
+    String query = "SELECT * FROM Tests WHERE TestId ="+ testId ;
+    db.query(query);
+
+    headerText1.setText(db.getString("TestName"));
+
 
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
@@ -106,7 +106,6 @@ class Results implements Scene {
       .setSize(100, 50)
       .setColorBackground(0xff161759)
       ;
-
   }
   void removeControl() {
     try {
@@ -114,7 +113,6 @@ class Results implements Scene {
       cp5.getController("Back").remove();
       headerText1.remove();
       scoreList.remove();
-      println("here");
       cp5.getController("scoreList").remove();
     }
     catch(Exception e) {

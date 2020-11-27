@@ -1,4 +1,4 @@
-void controlEvent(ControlEvent theEvent) { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+void controlEvent(ControlEvent theEvent) {  //<>// //<>// //<>//
   if (theEvent.isFrom(MultipleChoiceButton)) { 
     if (MultipleChoiceButton.getState(0)==true) {
       cp5.getController("Svar").remove();
@@ -80,6 +80,14 @@ void controlEvent(ControlEvent theEvent) { //<>// //<>// //<>// //<>// //<>// //
     }
   }
   if (currentScene == 5) {
+
+    if (theEvent.getName().contains("CheckAnswer")) {
+      println("Praise the sun " + theEvent.getValue());
+      scenes[7] = new Results((int)theEvent.getValue());
+      //scenes[7].removeControl();
+      changeScene(currentScene, 7);
+    }
+
     if (theEvent.getName() != "Login") {
       String query = "SELECT * FROM Tests";
       db.query(query);
@@ -243,10 +251,10 @@ public void fileSelected(File selection) {
         }
         if (s[0] != null) {
           if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) {
-            _class = s[0].substring(2, s[0].length()-3); //<>// //<>//
+            _class = s[0].substring(2, s[0].length()-3); //<>//
           }
         }
-        //<>// //<>//
+        //<>//
         if (username != null && _class != null) {
           String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";
           db.query(query);
