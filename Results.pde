@@ -17,7 +17,7 @@ class Results implements Scene {
 
       cp5.addButton("Back")
         .setPosition(width*0.1, height*0.1)
-        .setSize(45, 25)
+        .setSize(100, 50)
         .setBroadcast(false)
         .setValue(5)
         .setBroadcast(true)
@@ -25,7 +25,7 @@ class Results implements Scene {
 
       cp5.addButton("Logout")
         .setPosition(width*0.9, 75)
-        .setSize(75, 25)
+        .setSize(100, 50)
         ;
 
       this.headerText1 = cp5.addTextarea("ht1")

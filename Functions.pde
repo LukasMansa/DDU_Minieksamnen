@@ -1,4 +1,4 @@
-void controlEvent(ControlEvent theEvent) {
+void controlEvent(ControlEvent theEvent) { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
   if (theEvent.isFrom(MultipleChoiceButton)) { 
     if (MultipleChoiceButton.getState(0)==true) {
       cp5.getController("Svar").remove();
@@ -26,6 +26,14 @@ void controlEvent(ControlEvent theEvent) {
         .setColor(color(#ebebeb))
         .setColorCaptionLabel(color(#4e4f4a))
         ;
+      this.headerText2 = cp5.addTextarea("Instructions")
+        .setPosition(width/2-100, 325)
+        .setSize(200, 60)
+        .setFont(createFont("arial", 16))
+        .setLineHeight(14)
+        .setColor(color(128))
+        ;
+      headerText2.setText("Vælg det rigtige svar ved at trykke på boksen ved siden af muligheden");
       if (CorrectAnswer == null) {
         CorrectAnswer = cp5.addRadioButton("CorrectAnswer")
           .setPosition(width/2-230, 410)
@@ -52,6 +60,7 @@ void controlEvent(ControlEvent theEvent) {
       cp5.getController("Svar2").remove();
       cp5.getController("Svar3").remove();
       cp5.getController("Svar4").remove(); 
+      headerText2.remove();
       CorrectAnswer.removeItem("0");
       CorrectAnswer.removeItem("1");
       CorrectAnswer.removeItem("2");
@@ -191,7 +200,7 @@ public void Gem() {
 }
 
 public void MakeTest() {
-  if (selectedTeam.length()>0 && testName.length()>0) {
+  if (selectedTeam.length()>0 && testName.length()>0 && selectedTeam != "") {
     for (String q : queries) {
       db.query(q);
     }
@@ -224,22 +233,22 @@ public void fileSelected(File selection) {
     if (newPath.contains(".xlsx")) {
       saving = importExcel(newPath);
       for (String s[] : saving) {
-        if (s[1] != null) { //<>//
-          s[1] = s[1].replaceAll("\\s+", ""); //<>//
-          if (s[1].length()>3 && !s[1].contains("Fornavn")) { //<>//
-            username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999)); //<>//
-          } //<>//
-        } //<>//
-        if (s[0] != null) { //<>//
-          if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) { //<>//
-            _class = s[0].substring(2, s[0].length()-3); //<>// //<>// //<>//
-          } //<>//
+        if (s[1] != null) {
+          s[1] = s[1].replaceAll("\\s+", "");
+          if (s[1].length()>3 && !s[1].contains("Fornavn")) {
+            username = s[1].substring(0, 4).toLowerCase() + String.format("%04d", (int) random(0, 9999));
+          }
         }
-        //<>// //<>// //<>//
-        if (username != null && _class != null) { //<>//
+        if (s[0] != null) {
+          if (!s[0].contains("Klassen") && !s[0].contains("Antal") && s[0].length()>3) {
+            _class = s[0].substring(2, s[0].length()-3); //<>// //<>//
+          }
+        }
+        //<>// //<>//
+        if (username != null && _class != null) {
           String query = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES (" + db.escape(username) + ", '" +encrypt.encrypt(password)+ "', " + db.escape(_class) + ", '0')";
           db.query(query);
-          error.setText(""); //<>//
+          error.setText("");
         }
       }
     } else {

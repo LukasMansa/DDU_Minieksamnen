@@ -49,7 +49,7 @@ public class StudentMainPage implements Scene {
         studentTests.add(cp5.addButton("Test"+i)
           .setBroadcast(false)
           .setPosition(250+250*i, 250)
-          .setSize(50, 25)
+          .setSize(100, 50)
           .setValue(db.getInt("TestId"))
           .setCaptionLabel("Tag test")
           .setBroadcast(true)

@@ -7,7 +7,7 @@ class Team implements Scene {
     cp5.addButton("Back")
       .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
-      .setSize(50, 30)
+      .setSize(100, 50)
       .setBroadcast(false)
       .setValue(4)
       .setBroadcast(true)
@@ -21,9 +21,9 @@ class Team implements Scene {
       .setColor(color(128))
       ;
     cp5.addButton("Logout")
-      .setCaptionLabel("VLog ud")
+      .setCaptionLabel("Log ud")
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
       .setColorBackground(0xff161759)
       ;
     headerText1.setText("Hold:");

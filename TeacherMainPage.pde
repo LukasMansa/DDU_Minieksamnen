@@ -1,6 +1,5 @@
 ArrayList<Button> tests = new ArrayList<Button>(); //<>//
 ArrayList<Textarea> testNames = new ArrayList<Textarea>();
-ArrayList<Button> admin = new ArrayList<Button>();
 ArrayList<Button> checkAnswers = new ArrayList<Button>();
 public class TeacherMainPage implements Scene {
   Textarea yourTests;
@@ -11,7 +10,7 @@ public class TeacherMainPage implements Scene {
     // rendes the header of the page
     cp5.addButton("NewTest")
       .setCaptionLabel("Ny Test")
-      .setPosition(width*0.1, height*0.4)
+      .setPosition(width*0.1, height*0.7)
       .setSize(100, 50)
        .setColorBackground(0xff161759)
       //.setColorBackground(color(255, 100))
@@ -20,8 +19,8 @@ public class TeacherMainPage implements Scene {
 
     cp5.addButton("Import")
       .setCaptionLabel("Importer nyt hold")
-      .setPosition(width*0.2, height*0.4)
-      .setSize(150, 25)
+      .setPosition(width*0.2, height*0.7)
+      .setSize(150, 50)
       ;
     // logout button
     cp5.addButton("Logout")
@@ -53,17 +52,11 @@ public class TeacherMainPage implements Scene {
           .setBroadcast(true)
           .setCaptionLabel("Afslut")
           );
-        admin.add(cp5.addButton("Administrate"+admin.size())
-          .setPosition(310+250*i, 250)
-          .setSize(100, 50)
-          .setBroadcast(false)
-          .setValue(1)
-          .setBroadcast(true)
-          );
+
       } else if (db.getInt("Status") == 2) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(50, 25)
+          .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -71,7 +64,7 @@ public class TeacherMainPage implements Scene {
           );
         checkAnswers.add(cp5.addButton("CheckAnswer" + checkAnswers.size())
           .setPosition(310+250*i, 250)
-          .setSize(140, 25)
+          .setSize(140, 50)
           .setBroadcast(false)
           .setValue(db.getInt("TestId"))
           .setBroadcast(true)
@@ -113,9 +106,6 @@ public class TeacherMainPage implements Scene {
       for (int i = 0; i<tests.size(); i++) {
         cp5.getController("TestStatus"+i).remove();
       }
-      for (int i = 0; i<admin.size(); i++) {
-        cp5.getController("Administrate"+i).remove();
-      }
       
       for (int i = 0; i<checkAnswers.size(); i++) {
         cp5.getController("CheckAnswer"+i).remove();
@@ -127,7 +117,6 @@ public class TeacherMainPage implements Scene {
       tests.clear();
       testNames.clear();
       yourTests.remove();
-      admin.clear();
       checkAnswers.clear();
     } 
     catch(Exception e) {

@@ -9,7 +9,7 @@ class AddTest implements Scene {
     cp5.addButton("Back")
       .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
-      .setSize(50, 30)
+      .setSize(100, 50)
       .setBroadcast(false)
       .setValue(5)
       .setBroadcast(true)

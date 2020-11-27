@@ -1,15 +1,16 @@
-
+Textarea headerText2;
 int isMultipleChoice = 0;
 RadioButton MultipleChoiceButton;
 RadioButton CorrectAnswer;
 class AddQuestion implements Scene { 
   Textarea headerText1;
 
+
   void inizializeControl() {
     cp5.addButton("Back")
       .setCaptionLabel("Tilbage")
       .setPosition(width*0.1, height*0.1)
-      .setSize(50, 30)
+      .setSize(100, 50)
       .setBroadcast(false)
       .setValue(4)
       .setBroadcast(true)
@@ -45,13 +46,12 @@ class AddQuestion implements Scene {
       .setColorBackground(color(#ff3636))
       .setColorActive(color(#435c27))
       .setColorLabel(color(#4e4f4a))
-      
+
       .setItemsPerRow(2)
       .setSpacingColumn(100)
       .setSpacingRow(50)
       .addItem("Is this multiple choice?", 0)
       ;
-
     cp5.addTextfield("Svar")
       .setPosition(width/2 - 100, 400)
       .setSize(200, 40)
