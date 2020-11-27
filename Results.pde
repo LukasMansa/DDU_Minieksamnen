@@ -34,8 +34,20 @@ class Results implements Scene {
         .setLineHeight(12)
         .setColor(color(128))
         ;
+        
+        
+    
+      String query = "SELECT * FROM Questions WHERE TestId = "+ testId ;
+      db.query(query);
+      
+      int questionCount = 0;
+      while(db.next()){
+        questionCount++;
+      }
+    
+        
 
-      String query = "SELECT * FROM Tests WHERE TestId ="+ testId ;
+      query = "SELECT * FROM Tests WHERE TestId ="+ testId ;
       db.query(query);
 
       headerText1.setText(db.getString("TestName"));
@@ -45,21 +57,21 @@ class Results implements Scene {
 
 
       String temp ="";
-      for (int i = 0; db.next(); i++) {
+      for (; db.next();) {
         int tempId = db.getInt("StudentId");
+        println(tempId);
         
-        query = "SELECT * FROM Stundets WHERE Id = " + tempId;
+        query = "SELECT * FROM Students WHERE Id = " + tempId;
         dbTwo.query(query);
 
-        temp+= dbTwo.getString("StudentName") + db.getInt("Score")+"\n";
+        temp+= dbTwo.getString("StudentName") +" : "+ db.getInt("Score")+" af "+ questionCount+"\n";
       }
-      println(temp + "temp");
 
       scoreList = cp5.addTextarea("scoreList")
-        .setPosition(width/2-50, 350)
-        .setSize(200, 600)
-        .setFont(createFont("arial", 40))
-        .setLineHeight(40)
+        .setPosition(width/2-100, 200)
+        .setSize(600, 1100)
+        .setFont(createFont("arial", 26))
+        .setLineHeight(26)
         .setColor(color(#4e4f4a))
         ;
       scoreList.setText(temp);
@@ -76,8 +88,6 @@ class Results implements Scene {
       scoreList.remove();
       println("here");
       cp5.getController("scoreList").remove();
-      //cp5.getController("").remove();
-      //cp5.getController("ht1").remove();
     }
     catch(Exception e) {
       println("Failure removing all controllers for restults "+ e);
