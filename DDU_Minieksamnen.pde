@@ -29,7 +29,7 @@ void setup() {
   assert dbTwo.connect():
   "Connection failed";
 
-  //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
+  //String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('elev', '"+encrypt.encrypt("elev")+"', '3d1', '0')";
   //String showUsers = "SELECT * FROM Tests";
   //String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Scores';";
   //db.query(query);
@@ -44,7 +44,7 @@ void setup() {
   //  query = "DELETE FROM Scores";
   //db.query(query);
   //String[] tableNames = db.getTableNames();
-  // db.query(makeSomeUsers);
+  //db.query(makeSomeUsers);
   //  db.query(showUsers);  
   //while(db.next()) {
   //    println(db.getInt("TestId"));
