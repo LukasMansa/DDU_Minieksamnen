@@ -1,4 +1,4 @@
-ArrayList<Button> tests = new ArrayList<Button>(); //<>// //<>//
+ArrayList<Button> tests = new ArrayList<Button>(); //<>//
 ArrayList<Textarea> testNames = new ArrayList<Textarea>();
 ArrayList<Button> admin = new ArrayList<Button>();
 ArrayList<Button> checkAnswers = new ArrayList<Button>();
@@ -12,16 +12,24 @@ public class TeacherMainPage implements Scene {
     cp5.addButton("NewTest")
       .setCaptionLabel("Ny Test")
       .setPosition(width*0.1, height*0.4)
-      .setSize(75, 25)
+      .setSize(100, 50)
+       .setColorBackground(0xff161759)
       //.setColorBackground(color(255, 100))
       //.setColorForeground(color(255, 100));
       ;
 
+    cp5.addButton("Import")
+      .setCaptionLabel("Importer nyt hold")
+      .setPosition(width*0.2, height*0.4)
+      .setSize(150, 25)
+      ;
     // logout button
     cp5.addButton("Logout")
+      .setCaptionLabel("Log ud")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 75)
-      .setSize(75, 25)
+      .setSize(100, 50)
+       .setColorBackground(0xff161759)
       ;
 
     String query = "SELECT * FROM Tests WHERE TeacherId = " + personID;
@@ -30,7 +38,7 @@ public class TeacherMainPage implements Scene {
       if (db.getInt("Status") == 0) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(50, 25)
+          .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -39,7 +47,7 @@ public class TeacherMainPage implements Scene {
       } else if (db.getInt("Status") == 1) {
         tests.add(cp5.addButton("TestStatus"+i)
           .setPosition(250+250*i, 250)
-          .setSize(50, 25)
+          .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
           .setBroadcast(true)
@@ -47,7 +55,7 @@ public class TeacherMainPage implements Scene {
           );
         admin.add(cp5.addButton("Administrate"+admin.size())
           .setPosition(310+250*i, 250)
-          .setSize(75, 25)
+          .setSize(100, 50)
           .setBroadcast(false)
           .setValue(1)
           .setBroadcast(true)
@@ -100,14 +108,15 @@ public class TeacherMainPage implements Scene {
     try {
       cp5.getController("NewTest").remove();
       cp5.getController("Logout").remove();
-
+      cp5.getController("Import").remove();
+      
       for (int i = 0; i<tests.size(); i++) {
         cp5.getController("TestStatus"+i).remove();
       }
       for (int i = 0; i<admin.size(); i++) {
         cp5.getController("Administrate"+i).remove();
       }
-
+      
       for (int i = 0; i<checkAnswers.size(); i++) {
         cp5.getController("CheckAnswer"+i).remove();
       }
@@ -129,4 +138,8 @@ public class TeacherMainPage implements Scene {
 
 public void NewTest() {
   changeScene(currentScene, 4);
+}
+
+public void Import() {
+  changeScene(currentScene,9);
 }

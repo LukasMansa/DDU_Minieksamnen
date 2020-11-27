@@ -19,6 +19,7 @@ public class TakeTest implements Scene {
   }
 
   void inizializeControl() {
+
     // the user cannot go back. They may only end the test 
     //cp5.addButton("Back")
     //  .setPosition(width*0.1, height*0.1)
@@ -35,10 +36,12 @@ public class TakeTest implements Scene {
     //  .setSize(75, 25)
     //  ;
 
+
     cp5.addButton("Afslut")
       //.setFont(createFont("arial", 18))
       .setPosition(width*0.9, 125)
       .setSize(100, 50)
+      .setColorBackground(0xff161759)
       ;
 
     testTitle = cp5.addTextarea("txt")
