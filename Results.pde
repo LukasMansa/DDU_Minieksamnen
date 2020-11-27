@@ -98,7 +98,7 @@ class Results implements Scene {
       .setLineHeight(12)
       .setColor(color(128))
       ;
-    headerText1.setText(R); //Her skal der stå navnet på testen som læren selv vælger når testen oprettes.
+    //headerText1.setText(R); //Her skal der stå navnet på testen som læren selv vælger når testen oprettes.
 
     cp5.addButton("Logout")
       .setCaptionLabel("Log ud")
