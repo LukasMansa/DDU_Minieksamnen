@@ -31,7 +31,7 @@ void setup() {
 
   //  String makeSomeUsers = "INSERT INTO Students (StudentName, Password, Class, IsTeacher) VALUES ('john1234', '"+encrypt.encrypt("a")+"', 'teacherClass', '1')";
   //String showUsers = "SELECT * FROM Tests";
-  //String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Tests';";
+  //String query = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Scores';";
   //db.query(query);
   // query = "DELETE FROM Tests";
   //db.query(query);
