@@ -91,6 +91,7 @@ class AddQuestion implements Scene {
         CorrectAnswer.removeItem("2");
         CorrectAnswer.removeItem("3");
         isMultipleChoice = 0;
+        headerText2.remove();
       }
     } 
     catch(Exception e) {
