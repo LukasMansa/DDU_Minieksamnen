@@ -43,7 +43,6 @@ public class StudentMainPage implements Scene {
       for (int t : testIds) {
         if (t!=db.getInt("TestId")) {
           nonIdenticalTests++;
-          println("hello");
         }
       }
       if (db.getInt("Status") == 1 && nonIdenticalTests==testIds.size()) {
@@ -86,8 +85,4 @@ public class StudentMainPage implements Scene {
     catch(Exception e) {
     }
   }
-}
-
-public void Logout() {
-  changeScene(currentScene, 0);
 }

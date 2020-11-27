@@ -9,7 +9,7 @@ color[] standardColors = {color(#ff3636), color(#435c27), color(#161759), color(
 int personID; 
 
 Scene[] scenes = {new FrontPage(), new StudentMainPage(), new TakeTest(), new AddQuestion(), new AddTest(), new TeacherMainPage(), new Team(), new Results(), new Statistics(), new Import()}; 
-int currentScene = 9;
+int currentScene = 0;
 int boxSelected = 0;
 SQLite db;
 Encryption encrypt;

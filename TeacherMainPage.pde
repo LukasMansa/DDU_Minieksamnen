@@ -133,11 +133,3 @@ public class TeacherMainPage implements Scene {
     }
   }
 }
-
-public void NewTest() {
-  changeScene(currentScene, 4);
-}
-
-public void Import() {
-  changeScene(currentScene,9);
-}
