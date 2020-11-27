@@ -36,7 +36,7 @@ public class TeacherMainPage implements Scene {
     for (int i = 0; db.next(); i++) {
       if (db.getInt("Status") == 0) {
         tests.add(cp5.addButton("TestStatus"+i)
-          .setPosition(250+250*i, 250)
+          .setPosition(150+300*i, 250)
           .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
@@ -45,7 +45,7 @@ public class TeacherMainPage implements Scene {
           );
       } else if (db.getInt("Status") == 1) {
         tests.add(cp5.addButton("TestStatus"+i)
-          .setPosition(250+250*i, 250)
+          .setPosition(150+300*i, 250)
           .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
@@ -55,7 +55,7 @@ public class TeacherMainPage implements Scene {
 
       } else if (db.getInt("Status") == 2) {
         tests.add(cp5.addButton("TestStatus"+i)
-          .setPosition(250+250*i, 250)
+          .setPosition(150+300*i, 250)
           .setSize(100, 50)
           .setBroadcast(false)
           .setValue(db.getInt("Status"))
@@ -63,7 +63,7 @@ public class TeacherMainPage implements Scene {
           .setCaptionLabel("Fjern test")
           );
         checkAnswers.add(cp5.addButton("CheckAnswer" + checkAnswers.size())
-          .setPosition(310+250*i, 250)
+          .setPosition(260+300*i, 250)
           .setSize(140, 50)
           .setBroadcast(false)
           .setValue(db.getInt("TestId"))
@@ -73,7 +73,7 @@ public class TeacherMainPage implements Scene {
       }
       if (db.getInt("Status")<3) {
         testNames.add(cp5.addTextarea("TestName"+i)
-          .setPosition(250+250*i, 200)
+          .setPosition(150+300*i, 200)
           .setSize(100, 50)
           .setFont(createFont("arial", 20))
           .setLineHeight(14)

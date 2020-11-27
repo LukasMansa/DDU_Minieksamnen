@@ -208,6 +208,8 @@ public void MakeTest() {
     selectedTeam = "";
     queries.clear();
     changeScene(currentScene, 5);
+  } else {
+    errorMessage.setText("Fejl: Intet hold er valgt");
   }
 }
 public void Importer() {
