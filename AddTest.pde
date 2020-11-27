@@ -136,6 +136,8 @@ public void MakeTest() {
       db.query(q);
     }
     testName = "";
+    selectedTeam = "";
+    queries.clear();
     changeScene(currentScene, 5);
   }
 }
